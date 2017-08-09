@@ -6,7 +6,7 @@
         nuxtjs
       </h1>
       <h2 class="subtitle" style="font-size: 60px">
-        webhook还是不行啊啊
+        webhook还是的
       </h2>
       <div class="links">
         <a href="https://nuxtjs.org/" target="_blank" class="button--green">Documentation</a>

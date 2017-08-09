@@ -11,3 +11,5 @@ npm-debug.log
 dist
 
 .idea
+/deploy.js
+/deploy.sh

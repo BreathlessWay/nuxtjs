@@ -6,7 +6,7 @@
         nuxtjs
       </h1>
       <h2 class="subtitle" style="font-size: 60px">
-        webhook不走w5twtrwtwtwt
+        webhook不走gsgsfgefwerwt
       </h2>
       <div class="links">
         <a href="https://nuxtjs.org/" target="_blank" class="button--green">Documentation</a>

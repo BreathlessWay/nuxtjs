@@ -6,7 +6,7 @@
         nuxtjs
       </h1>
       <h2 class="subtitle" style="font-size: 60px">
-        webhook不走git命令,什么玩意儿
+        webhook不走git命令,什么贵玩意儿
       </h2>
       <div class="links">
         <a href="https://nuxtjs.org/" target="_blank" class="button--green">Documentation</a>

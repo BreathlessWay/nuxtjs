@@ -5,7 +5,7 @@
       <h1 class="title">
         nuxtjs
       </h1>
-      <h2 class="subtitle">
+      <h2 class="subtitle" style="font-size: 30px">
         Nuxt.js project
       </h2>
       <div class="links">

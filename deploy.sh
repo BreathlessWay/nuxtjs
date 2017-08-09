@@ -8,5 +8,5 @@ git pull
 git checkout dev
 npm i
 npm run build
-/root/node/pm2 restart npm
+/root/node/bin/pm2 restart npm
 echo "Finished."

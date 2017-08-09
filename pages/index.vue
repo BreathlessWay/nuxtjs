@@ -6,8 +6,7 @@
         nuxtjs
       </h1>
       <h2 class="subtitle" style="font-size: 60px">
-        webhook健康热突然头晕
-      </h2>
+        webhookhderterter
       <div class="links">
         <a href="https://nuxtjs.org/" target="_blank" class="button--green">Documentation</a>
         <a href="https://github.com/nuxt/nuxt.js" target="_blank" class="button--grey">GitHub</a>

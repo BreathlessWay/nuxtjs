@@ -10,7 +10,7 @@
       </h2>
       <div class="links">
         <a href="/page" class="button--green">Page</a>
-        <span @click="$router.push({name:'wrong'})" class="button--grey">GitHub</span>
+        <span @click="$router.push({name:'wrong'})" class="button--grey">错误处理</span>
       </div>
       <img src="/1.jpeg" alt="" style="width: 100%">
       <div class="back-img"></div>

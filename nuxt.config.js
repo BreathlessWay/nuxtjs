@@ -24,6 +24,7 @@ module.exports = {
     /*
     ** Run ESLINT on save
     */
+    analyze: true,
     vendor: ['axios'],
     extend (config, ctx) {
       if (ctx.dev && ctx.isClient) {

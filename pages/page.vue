@@ -1,6 +1,6 @@
 <template>
   <article class="page">
-    page
+    page{{project}}
   </article>
 </template>
 
@@ -13,15 +13,24 @@
 <script>
   export default {
     name: 'page',
-    head: {
-      title: 'page',
-      meta: [
-        {hid: 'description', name: 'description', content: 'page'},
-        {hid: 'author', name: 'author', content: 'me'}
-      ],
-      link: [
-        {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}
-      ]
+    asyncData (context) {
+      console.log(context)
+      return {project: 'nuxt'}
+    },
+    data () {
+      return {project: 'default'}
+    },
+    head () {
+      return {
+        title: 'page',
+        meta: [
+          {hid: 'description', name: 'description', content: 'page'},
+          {hid: 'author', name: 'author', content: 'fuck'}
+        ],
+        link: [
+          {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}
+        ]
+      }
     }
   }
 </script>

@@ -1,8 +1,20 @@
 <template>
-  <div class="defalut">
+  <article>
+    <header>header</header>
     <nuxt/>
-  </div>
+    <footer>footer</footer>
+  </article>
 </template>
 
-<style>
-</style>
+<style></style>
+<script>
+  export default {
+    data () {
+      return {}
+    },
+    created () {
+      console.log(this.$route)
+    },
+    components: {}
+  }
+</script>

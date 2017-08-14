@@ -10,11 +10,14 @@
   import axios from 'axios'
 
   export default {
-    async asyncData (context) {
-      let {data} = await axios.get(`/topics`)
-      return {
-        data: data
-      }
+    async asyncData ({error}) {
+      return axios.get(`/topics`)
+        .then(res => {
+          return {data: res.data.success}
+        })
+        .catch(err => {
+          error({statusCode: err.status || 404, message: err.message || 'Post not found'})
+        })
     },
     data () {
       return {

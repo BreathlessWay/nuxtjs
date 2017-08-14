@@ -1,9 +1,23 @@
 {
-  "name": "nuxtjs",
+  "name": "Blog",
   "version": "1.0.0",
-  "description": "Nuxt.js project",
-  "author": "朱健 <zhujian@yowits.com>",
+  "description": "smalltiger blog",
+  "author": "BreathlessWay(731005087@qq.com)",
   "private": true,
+  "keywords": [
+    "nuxtjs",
+    "vue"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BreathlessWay/nuxtjs"
+  },
+  "contributors": [
+    {
+      "name": "BreathlessWay",
+      "email": "731005087@qq.com"
+    }
+  ],
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
@@ -31,5 +45,8 @@
     "less-loader": "^4.0.5",
     "postcss": "^6.0.8",
     "postcss-loader": "^2.0.6"
+  },
+  "engines": {
+    "node": ">=6.11.x <8.x.x"
   }
 }

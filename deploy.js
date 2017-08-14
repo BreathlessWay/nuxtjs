@@ -1,13 +1,13 @@
-var http = require('http')
-var createHandler = require('github-webhook-handler')
-var handler = createHandler({path: '/', secret: 'ssrSmallTiger'})
+const http = require('http')
+const createHandler = require('github-webhook-handler')
+const handler = createHandler({path: '/', secret: 'ssrSmallTiger'})
 
 // 上面的 secret 保持和 GitHub 后台设置的一致
 
 function runCmd (cmd, args, callback) {
-  var spawn = require('child_process').spawn
-  var child = spawn(cmd, args)
-  var resp = ''
+  const spawn = require('child_process').spawn
+  const child = spawn(cmd, args)
+  let resp = ''
 
   child.stdout.on('data', function (buffer) { resp += buffer.toString() })
   child.stdout.on('end', function () { callback(resp) })

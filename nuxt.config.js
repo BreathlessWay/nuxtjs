@@ -1,3 +1,4 @@
+const webpack = require('webpack')
 module.exports = {
   /*
   ** Headers of the page
@@ -6,7 +7,7 @@ module.exports = {
     title: 'nuxtjs',
     meta: [
       {charset: 'utf-8'},
-      {name: 'viewport', content: 'width=device-width, initial-scale=1'},
+      {name: 'viewport', content: 'width=device-width, initial-scale=1, shrink-to-fit=no'},
       {hid: 'description', name: 'description', content: 'Nuxt.js project'}
     ],
     link: [
@@ -17,16 +18,28 @@ module.exports = {
   /*
   ** Customize the progress-bar color
   */
+  css: ['bootstrap/dist/css/bootstrap.css'],
+  plugins: ['~plugins/bootstrap.js', '~plugins/axiosConfig.js'],
   loading: {color: '#3B8070'},
   /*
   ** Build configuration
   */
+  env: {
+    baseUrl: 'http://api.smalltiger.me'
+  },
   build: {
     /*
     ** Run ESLINT on save
     */
     // analyze: true,
-    vendor: ['axios'],
+    plugins: [
+      new webpack.ProvidePlugin({
+        jQuery: 'jquery',
+        $: 'jquery',
+        jquery: 'jquery'
+      })
+    ],
+    vendor: ['axios', 'jquery', 'bootstrap'],
     extend (config, ctx) {
       if (ctx.dev && ctx.isClient) {
         config.module.rules.push({

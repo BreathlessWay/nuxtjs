@@ -2,6 +2,7 @@
 
 echo "Start deployment"
 echo "pulling source code..."
+pm2 stop npm
 git reset --hard origin/master
 git clean -f
 git pull

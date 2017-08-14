@@ -26,6 +26,16 @@
     },
     components: {},
     created () {
+      axios.get('/topics')
+        .then(res => {
+          console.log(res)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+        .finally(() => {
+          console.log('axios finish')
+        })
     }
   }
 </script>

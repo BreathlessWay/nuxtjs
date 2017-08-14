@@ -123,7 +123,7 @@
       .blog-footer_btn {
         padding-top: 26px;
         a {
-          margin: 0 40px;
+          margin: 0 32px;
         }
       }
     }

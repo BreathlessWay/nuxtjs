@@ -30,7 +30,11 @@ module.exports = {
   /*
   ** Customize the progress-bar color
   */
-  css: ['bootstrap/dist/css/bootstrap.css'],
+  css: [
+    'bootstrap/dist/css/bootstrap.css', {
+      src: '~assets/style.less',
+      lang: 'less'
+    }],
   plugins: ['~plugins/bootstrap.js', '~plugins/axiosConfig.js'],
   loading: {color: '#3B8070'},
   /*

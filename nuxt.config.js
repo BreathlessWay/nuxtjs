@@ -24,7 +24,7 @@ module.exports = {
   ** Build configuration
   */
   env: {
-    baseUrl: 'api.smalltiger.me'
+    baseUrl: 'http://api.smalltiger.me'
   },
   build: {
     /*

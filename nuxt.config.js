@@ -8,13 +8,25 @@ module.exports = {
     meta: [
       {charset: 'utf-8'},
       {name: 'viewport', content: 'width=device-width, initial-scale=1, shrink-to-fit=no'},
+      {name: 'renderer', content: 'webkit'},
+      {'http-equiv': 'X-UA-Compatible', content: 'IE=edge'},
+      {name: 'author', content: 'BreathlessWay  731005087@qq.com'},
+      {name: 'apple-mobile-web-app-title', content: 'smalltiger blog'},
+      {name: 'apple-mobile-web-app-capable', content: 'yes'},
+      {name: 'apple-mobile-web-app-status-bar-style', content: '#263238'},
+      {name: 'screen-orientation', content: 'portrait'},
+      {name: 'x5-orientation', content: 'portrait'},
+      {name: 'full-screen', content: 'yes'},
+      {name: 'x5-fullscreen', content: 'true'},
+      {name: 'browsermode', content: 'application'},
+      {name: 'x5-page-mode', content: 'app'},
+      {name: 'theme-color', content: '#263238'},
       {hid: 'description', name: 'description', content: 'Nuxt.js project'}
     ],
     link: [
       {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}
     ]
   },
-  css: [],
   /*
   ** Customize the progress-bar color
   */
@@ -25,7 +37,7 @@ module.exports = {
   ** Build configuration
   */
   env: {
-    baseUrl: 'http://api.smalltiger.me'
+    baseUrl: 'https://cnodejs.org/api/v1'
   },
   build: {
     /*

@@ -1,7 +1,7 @@
 <template>
   <article class="blog-index">
     <section class="container">
-      bootstrap axios vuex less环境搭建完成
+      bootstrap axios vuex less环境搭建完成{{JSON.stringify(data)}}
     </section>
   </article>
 </template>
@@ -10,15 +10,20 @@
   import axios from 'axios'
 
   export default {
-    asyncData (context) {
-      axios.get('')
+    async asyncData (context) {
+      let {data} = await axios.get(`/topics`)
+      return {
+        data: data
+      }
     },
-    data (context) {
+    data () {
       return {
         title: '主页'
       }
     },
-    components: {}
+    components: {},
+    created () {
+    }
   }
 </script>
 

@@ -24,3 +24,4 @@ For detailed explanation on how things work, checkout the [Nuxt.js docs](https:/
 ## Problem
 1. 不能通过cdn引入插件，提供全局变量
 2. 如果需要使用less sass scss需要安装对应的loader
+3. axios配置

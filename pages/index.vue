@@ -1,7 +1,7 @@
 <template>
   <article class="blog-index">
     <section class="container">
-      bootstrap axios vuex less环境搭建
+      bootstrap axios vuex less环境搭建完成
     </section>
   </article>
 </template>

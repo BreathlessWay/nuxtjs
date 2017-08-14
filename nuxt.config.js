@@ -12,8 +12,7 @@ module.exports = {
     ],
     link: [
       {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}
-    ],
-    script: []
+    ]
   },
   /*
   ** Customize the progress-bar color
@@ -25,7 +24,7 @@ module.exports = {
   ** Build configuration
   */
   env: {
-    baseUrl: 'https://www.baidu.com'
+    baseUrl: ''
   },
   build: {
     /*

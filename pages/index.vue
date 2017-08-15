@@ -10,12 +10,17 @@
         </li>
       </ul>
       <loading v-show="showLoading"></loading>
-      <ul class="blog-index_img" v-show="!showLoading">
+      <ul class="blog-index_img" v-show="!showLoading && articleBase.response.list.length>0">
         <li v-for="(list,index) in articleBase.response.list" :key="index" class="col-sm-4">
           <img :src=list.cover_link :alt=list.title>
         </li>
         <li class="clearfix"></li>
       </ul>
+      <div class="text-center" v-show="!showLoading && articleBase.response.list.length === 0">
+        <div class="white-space"></div>
+        <img src="../static/index-no-data.png" alt="暂无作品" width="298" height="241">
+        <div class="white-space"></div>
+      </div>
       <aside v-show="!showLoading" class="blog-index_more text-center">
         <button type="button" class="btn btn-default" v-show="articleBase.response.hasMore" @click="getMoreArticle">
           <span>查看更多</span>

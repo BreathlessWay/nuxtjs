@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import page from './page'
+import home from './home'
 
 Vue.use(Vuex)
 
 const store = () => new Vuex.Store({
   modules: {
-    page
+    home
   }
 })
 

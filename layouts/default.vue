@@ -2,7 +2,7 @@
   <article class="blog">
     <header class="blog-header">
       <nav class="navbar navbar-default">
-        <div class="container-fluid">
+        <div class="container-fluid" style="max-width:1366px;">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -72,9 +72,7 @@
             Copyright © 2017 SMALLTIGER </p>
         </div>
         <div class="col-sm-6 col-xs-12 blog-footer_code">
-          <img src="../static/footer-4.png" alt="二维码" width="126" height="126">
-          &nbsp;&nbsp;&nbsp;
-          <img src="../static/footer-5.png" alt="二维码" width="126" height="126">
+          <img src="../static/footer-4.png" alt="二维码" width="126" height="126"> &nbsp;&nbsp;&nbsp; <img src="../static/footer-5.png" alt="二维码" width="126" height="126">
         </div>
       </section>
     </footer>
@@ -140,9 +138,22 @@
       float: right;
     }
   }
+
   @media (max-width: 768px) {
+    .blog-header {
+      .navbar-brand {
+        img{
+          position: absolute;
+          top: 5px;
+          left: 0;
+          right: 0;
+          margin: auto;
+        }
+      }
+    }
+
     .blog-footer {
-      .blog-footer_code{
+      .blog-footer_code {
         text-align: center;
         margin-top: 30px;
       }

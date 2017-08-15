@@ -1,5 +1,6 @@
 import * as actions from './action'
 import * as mutationTypes from './mutations'
+import Vue from 'vue'
 
 const state = {
   articleBase: {
@@ -18,8 +19,10 @@ const state = {
 
 const mutations = {
   [mutationTypes.UPDATE_ARTICLE_LIST] (state, data) {
-    console.log(data)
-    state.articleBase = data
+    Vue.set(state, data.request.tags, {
+      ...state.articleBase,
+      ...data
+    })
   }
 }
 

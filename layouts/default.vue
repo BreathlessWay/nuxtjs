@@ -1,7 +1,7 @@
 <template>
   <article class="blog">
     <header class="blog-header">
-      <nav class="navbar navbar-default">
+      <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid" style="max-width:1366px;">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
@@ -142,7 +142,7 @@
   @media (max-width: 768px) {
     .blog-header {
       .navbar-brand {
-        img{
+        img {
           position: absolute;
           top: 5px;
           left: 0;
@@ -166,7 +166,6 @@
       return {}
     },
     created () {
-      console.log(this.$route)
     },
     components: {}
   }

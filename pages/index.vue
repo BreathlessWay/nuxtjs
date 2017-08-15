@@ -62,7 +62,7 @@
     },
     computed: {
       articleBase () {
-        return this.$store.state.home.articleBase
+        return this.$store.state.home[this.title[this.activeIndex].name] ? this.$store.state.home[this.title[this.activeIndex].name] : this.$store.state.home.articleBase
       }
     },
     components: {

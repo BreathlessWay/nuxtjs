@@ -4,7 +4,6 @@ import { UPDATE_ARTICLE_LIST } from './mutations'
 export function GET_ARTICLE_LIST ({state, rootState, commit, dispatch, getters}, params = {}) {
   return axios.get('articles', {params})
     .then(res => {
-      console.log(res.data.meta.pagination.total)
       let hasMore = true
       if (res.data.data.length < params.count) {
         hasMore = false

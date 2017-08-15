@@ -1,7 +1,8 @@
 <template>
   <article class="blog-index">
-    <section class="container">
-      bootstrap axios vuex less环境搭建完成{{JSON.stringify(data)}}
+    <header class="blog-index_banner"></header>
+    <section class="container-fluid">
+
     </section>
   </article>
 </template>
@@ -44,5 +45,10 @@
   @import "../assets/var";
 
   .blog-index {
+    .blog-index_banner {
+      background: url("../static/banner.png") #fcdb34 no-repeat center;
+      background-size: cover;
+      height: 500px;
+    }
   }
 </style>

@@ -26,3 +26,4 @@ For detailed explanation on how things work, checkout the [Nuxt.js docs](https:/
 2. 如果需要使用less sass scss需要安装对应的loader
 3. axios配置
 4. layouts不能引入组件
+5. build:{extractCSS: true} 开启抽离css

@@ -48,6 +48,7 @@ module.exports = {
     ** Run ESLINT on save
     */
     // analyze: true,
+    extractCSS: true,
     plugins: [
       new webpack.ProvidePlugin({
         jQuery: 'jquery',

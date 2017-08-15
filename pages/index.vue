@@ -3,29 +3,31 @@
     <header class="blog-index_banner">
       <img src="../static/banner.png" alt="">
     </header>
-    <section class="blog-index_content">
-      <ul class="nav nav-pills nav-justified">
-        <li role="presentation" v-for="(list,index) in title" :key="index" :class="{active:index===activeIndex}" v-if="list.type==='works'">
-          <a href="#" @click.prevent="handleTabsClick(index,list.name)">{{list.name}}</a>
-        </li>
-      </ul>
-      <loading v-show="showLoading"></loading>
-      <ul class="blog-index_img" v-show="!showLoading && articleBase.response.list.length>0">
-        <li v-for="(list,index) in articleBase.response.list" :key="index" class="col-sm-4">
-          <img :src=list.cover_link :alt=list.title>
-        </li>
-        <li class="clearfix"></li>
-      </ul>
-      <div class="text-center" v-show="!showLoading && articleBase.response.list.length === 0">
-        <div class="white-space"></div>
-        <img src="../static/index-no-data.png" alt="暂无作品" width="298" height="241">
-        <div class="white-space"></div>
-      </div>
-      <aside v-show="!showLoading" class="blog-index_more text-center">
-        <button type="button" class="btn btn-default" v-show="articleBase.response.hasMore" @click="getMoreArticle">
-          <span>查看更多</span>
-        </button>
-      </aside>
+    <section class="blog-index_wrap">
+      <article class="blog-index_content">
+        <ul class="nav nav-pills nav-justified">
+          <li role="presentation" v-for="(list,index) in title" :key="index" :class="{active:index===activeIndex}" v-if="list.type==='works'">
+            <a href="#" @click.prevent="handleTabsClick(index,list.name)">{{list.name}}</a>
+          </li>
+        </ul>
+        <loading v-show="showLoading"></loading>
+        <ul class="blog-index_img" v-show="!showLoading && articleBase.response.list.length>0">
+          <li v-for="(list,index) in articleBase.response.list" :key="index" class="col-sm-4">
+            <img :src=list.cover_link :alt=list.title>
+          </li>
+          <li class="clearfix"></li>
+        </ul>
+        <div class="text-center" v-show="!showLoading && articleBase.response.list.length === 0">
+          <div class="white-space"></div>
+          <img src="../static/index-no-data.png" alt="暂无作品" width="298" height="241">
+          <div class="white-space"></div>
+        </div>
+        <aside v-show="!showLoading" class="blog-index_more text-center">
+          <button type="button" class="btn btn-default" v-show="articleBase.response.hasMore" @click="getMoreArticle">
+            <span>查看更多</span>
+          </button>
+        </aside>
+      </article>
     </section>
   </article>
 </template>
@@ -114,8 +116,11 @@
       }
     }
 
-    .blog-index_content {
+    .blog-index_wrap {
+      width: 100%;
       background: #fff;
+    }
+    .blog-index_content {
       max-width: 1349px;
       margin: auto;
       .nav > li > a {

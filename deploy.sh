@@ -8,8 +8,8 @@ git clean -f
 git pull
 git checkout dev
 echo "pulling success && start build"
-npm i
-npm run build
-echo "build success && restart node"
+# npm i
+# npm run build
+# echo "build success && restart node"
 pm2 restart npm
 echo "Finished."

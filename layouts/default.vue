@@ -57,13 +57,14 @@
       <section class="row">
         <div class="col-sm-6 col-xs-12 text-center">
           <p class="blog-footer_btn">
-            <a href="#">
+            <a href="http://weibo.com/3753729900/profile?rightmod=1
+&wvr=6&mod=personinfo&is_all=1">
               <img src="../static/footer-1.png" alt="新浪微博">
             </a>
-            <a href="#">
-              <img src="../static/footer-2.png" alt="">
+            <a href="https://dribbble.com/smalltiger">
+              <img src="../static/footer-2.png" alt="dribbble">
             </a>
-            <a href="#">
+            <a href="mailto:nianzuotian@163.com">
               <img src="../static/footer-3.png" alt="邮箱">
             </a>
           </p>

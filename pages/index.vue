@@ -118,7 +118,7 @@
     }
 
     .blog-index_banner {
-      background: url("../static/banner.png") no-repeat center 70px fixed;
+      background: url("../static/banner.png") @banner-background no-repeat center 70px fixed;
       background-size: cover;
       width: 100%;
       height: calc(~"100vh - 70px");

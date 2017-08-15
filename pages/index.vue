@@ -49,16 +49,28 @@
   @import "../assets/var";
 
   .blog-index {
+    @media (max-width: 768px) {
+      .nav-justified {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+    }
+
     .blog-index_banner {
       img {
         width: 100%;
       }
     }
+
     .blog-index_content {
       max-width: 1349px;
       margin: auto;
       .nav > li > a {
         color: @color-default;
+        height: 40px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
         &:hover {
           background: none;
         }

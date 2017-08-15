@@ -114,7 +114,7 @@
         margin: 0;
         padding: 0;
       }
-      margin-top: 10px;
+      margin-top: 22px;
       background: #fff;
       .blog-footer_copyright {
         padding-top: 30px;

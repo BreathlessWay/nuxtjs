@@ -41,7 +41,7 @@ module.exports = {
   ** Build configuration
   */
   env: {
-    baseUrl: 'https://cnodejs.org/api/v1'
+    baseUrl: 'http://api.smalltiger.me'
   },
   build: {
     /*

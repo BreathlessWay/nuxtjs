@@ -1,6 +1,8 @@
 <template>
   <article class="blog-index">
-    <header class="blog-index_banner"></header>
+    <header class="blog-index_banner">
+      <img src="../static/banner.png" alt="">
+    </header>
     <section class="container-fluid">
 
     </section>
@@ -11,15 +13,6 @@
   import axios from 'axios'
 
   export default {
-    async asyncData ({error}) {
-      return axios.get(`/topics`)
-        .then(res => {
-          return {data: res.data.success}
-        })
-        .catch(err => {
-          error({statusCode: err.status || 404, message: err.message || 'Post not found'})
-        })
-    },
     data () {
       return {
         title: '主页'
@@ -27,7 +20,7 @@
     },
     components: {},
     created () {
-      axios.get('/topics')
+      axios.get('/api/v1/articles')
         .then(res => {
           console.log(res)
         })
@@ -46,9 +39,9 @@
 
   .blog-index {
     .blog-index_banner {
-      background: url("../static/banner.png") #fcdb34 no-repeat center;
-      background-size: cover;
-      height: 500px;
+      img {
+        width: 100%;
+      }
     }
   }
 </style>

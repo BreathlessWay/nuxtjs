@@ -112,7 +112,7 @@
       background: url("../static/banner.png") no-repeat center fixed;
       background-size: cover;
       width: 100%;
-      height: 900px;
+      height: calc(~"100vh - 70px");
     }
 
     .blog-index_wrap {

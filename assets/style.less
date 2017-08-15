@@ -10,23 +10,33 @@ body {
 }
 
 /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
-::-webkit-scrollbar
-{
+::-webkit-scrollbar {
   width: 5px;
   height: 16px;
   background-color: #ddd;
 }
 
 /*定义滚动条轨道 内阴影+圆角*/
-::-webkit-scrollbar-track
-{
+::-webkit-scrollbar-track {
   border-radius: 10px;
   background-color: @background-color;
 }
 
 /*定义滑块 内阴影+圆角*/
-::-webkit-scrollbar-thumb
-{
+::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background-color: #ddd;
+}
+
+.btn-default {
+  width: 250px;
+  height: 40px;
+  border: @border-default;
+  background: @background-color;
+  border-radius: 40px;
+  margin-bottom: @MP30PX;
+  &:hover {
+    border: @border-active;
+    background: @theme-color;
+  }
 }

@@ -9,6 +9,18 @@
           <a href="#" @click.prevent="handleTabsClick(index,list.name)">{{list.name}}</a>
         </li>
       </ul>
+      <loading v-show="showLoading"></loading>
+      <ul class="blog-index_img" v-show="!showLoading">
+        <li v-for="(list,index) in articleBase.response.list" :key="index" class="col-sm-4">
+          <img :src=list.cover_link :alt=list.title>
+        </li>
+        <li class="clearfix"></li>
+      </ul>
+      <aside v-show="!showLoading" class="blog-index_more text-center">
+        <button type="button" class="btn btn-default" v-show="articleBase.response.hasMore" @click="getMoreArticle">
+          <span>查看更多</span>
+        </button>
+      </aside>
     </section>
   </article>
 </template>
@@ -39,7 +51,8 @@
     data () {
       return {
         title: '主页',
-        activeIndex: 0
+        activeIndex: 0,
+        showLoading: true
       }
     },
     computed: {
@@ -47,20 +60,32 @@
         return this.$store.state.home.articleBase
       }
     },
-    components: {},
+    components: {
+      'loading': require('../components/loading.vue').default
+    },
     mounted () {
       this.getArticleList({tags: this.title[0].name})
     },
     methods: {
       getArticleList (params) {
+        this.showLoading = true
         this.$store.dispatch(mutationTypes.GET_ARTICLE_LIST, {...this.articleBase.request, ...params})
-          .then(res => {
-            console.log(res)
+          .catch(err => {
+            alert(err)
+          })
+          .finally(() => {
+            this.showLoading = false
           })
       },
       handleTabsClick (index, name) {
         this.activeIndex = index
         this.getArticleList({tags: name})
+      },
+      getMoreArticle () {
+        const params = {...this.articleBase.request}
+        const page = params.page + 1
+        params.count = page * params.count
+        this.getArticleList(params)
       }
     }
   }
@@ -85,6 +110,7 @@
     }
 
     .blog-index_content {
+      background: #fff;
       max-width: 1349px;
       margin: auto;
       .nav > li > a {
@@ -111,6 +137,33 @@
           height: 2px;
           background: @color-active;
           margin: auto;
+        }
+      }
+      .blog-index_img {
+        margin: 0;
+        padding: 0 0 @MP30PX 0;
+        list-style: none;
+        li {
+          padding-top: @MP30PX;
+          text-align: center;
+          img {
+            width: 100%;
+            max-width: 300px;
+            transition: all 0.4s ease;
+            &:hover {
+              box-shadow: 0 22px 43px 1px rgba(68, 68, 68, .2);
+              transform: translateY(-15px);
+            }
+          }
+        }
+      }
+      .blog-index_more {
+        .btn:hover {
+          &:after {
+            content: '>';
+            margin-left: 10px;
+            font-weight: 700;
+          }
         }
       }
     }

@@ -6,14 +6,20 @@ const state = {
     request: {
       page: 1,
       count: 9,
-      tags: ''
+      tags: '',
+      type: 'works'
     },
-    response: []
+    response: {
+      list: [],
+      total: 0
+    }
   }
 }
 
 const mutations = {
   [mutationTypes.UPDATE_ARTICLE_LIST] (state, data) {
+    console.log(data)
+    state.articleBase = data
   }
 }
 

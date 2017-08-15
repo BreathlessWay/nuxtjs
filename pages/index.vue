@@ -1,8 +1,6 @@
 <template>
   <article class="blog-index">
-    <header class="blog-index_banner">
-      <img src="../static/banner.png" alt="">
-    </header>
+    <header class="blog-index_banner"></header>
     <section class="blog-index_wrap">
       <article class="blog-index_content">
         <ul class="nav nav-pills nav-justified">
@@ -111,9 +109,10 @@
     }
 
     .blog-index_banner {
-      img {
-        width: 100%;
-      }
+      background: url("../static/banner.png") no-repeat center fixed;
+      background-size: cover;
+      width: 100%;
+      height: 900px;
     }
 
     .blog-index_wrap {

@@ -100,7 +100,16 @@
   @import "../assets/var";
 
   .blog-index {
+    margin-top: 90px;
     @media (max-width: 768px) {
+      & {
+        margin-top: 50px;
+      }
+
+      .blog-index_banner {
+        background-position-y: 50px !important;
+      }
+
       .nav-justified {
         display: flex;
         justify-content: space-between;

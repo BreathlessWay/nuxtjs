@@ -2,8 +2,8 @@
   <article class="work-detail">
     <article class="work-detail_content">
       <header class="row">
-        <h3 class="work-detail_title col-sm-8 col-xs-12">{{detail.data.title}}</h3>
-        <aside class="col-sm-4 work-detail_swiper hidden-xs">
+        <h3 class="work-detail_title col-sm-9 col-xs-12">{{detail.data.title}}</h3>
+        <aside class="col-sm-3 work-detail_swiper hidden-xs">
           <span class="glyphicon glyphicon-menu-left" v-show="detail.data.prev_slug" @click="$router.push({name:'work-detail-id',params:{id:detail.data.prev_slug}})"></span>
           <span>|</span>
           <span class="glyphicon glyphicon-menu-right" v-show="detail.data.next_slug" @click="$router.push({name:'work-detail-id',params:{id:detail.data.next_slug}})"></span>

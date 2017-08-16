@@ -4,7 +4,7 @@
     <section class="blog-index_wrap">
       <article class="blog-index_content">
         <ul class="nav nav-pills nav-justified">
-          <li role="presentation" v-for="(list,index) in title" :key="index" :class="{active:index===activeIndex}" v-if="list.type==='works'">
+          <li role="presentation" v-for="(list,index) in title" :key="index" :class="{active:index===activeIndex}">
             <a href="#" @click.prevent="handleTabsClick(index,list.name)">{{list.name}}</a>
           </li>
         </ul>
@@ -44,9 +44,12 @@
     asyncData ({store, error}) {
       return axios.get('tags')
         .then(res => {
-          const title = res.data.data.reverse()
+          const title = []
+          res.data.data.forEach(list => {
+            list.type === 'works' && title.push(list)
+          })
           return {
-            title: title
+            title: title.reverse()
           }
         })
         .catch(err => {
@@ -55,7 +58,6 @@
     },
     data () {
       return {
-        title: '主页',
         activeIndex: 0,
         showLoading: true
       }
@@ -66,7 +68,7 @@
       }
     },
     components: {
-      'loading': require('../components/loading.vue').default
+      'loading': require('~/components/loading.vue').default
     },
     mounted () {
       this.getArticleList({tags: this.title[0].name})
@@ -101,21 +103,6 @@
 
   .blog-index {
     margin-top: 90px;
-    @media (max-width: 768px) {
-      & {
-        margin-top: 50px;
-      }
-
-      .blog-index_banner {
-        background-position-y: 50px !important;
-      }
-
-      .nav-justified {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-      }
-    }
 
     .blog-index_banner {
       background: url("../static/banner.png") @banner-background no-repeat center 70px fixed;
@@ -183,6 +170,25 @@
             font-weight: 700;
           }
         }
+      }
+    }
+    @media (max-width: 768px) {
+      .blog-index_banner {
+        height: calc(~"100vh - 50px");
+      }
+
+      & {
+        margin-top: 50px;
+      }
+
+      .blog-index_banner {
+        background-position-y: 50px;
+      }
+
+      .nav-justified {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
       }
     }
   }

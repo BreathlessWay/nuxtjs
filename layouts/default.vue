@@ -80,7 +80,7 @@
 </template>
 
 <style lang="less">
-  @import "~assets/var";
+  @import "../assets/var";
 
   .blog {
     .blog-header {
@@ -139,7 +139,7 @@
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 760px) {
     .blog-header {
       .navbar-brand {
         img {

@@ -25,17 +25,22 @@ module.exports = {
     ],
     link: [
       {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}
+    ],
+    script: [
+      {src: 'https://cdn.bootcss.com/babel-polyfill/6.23.0/polyfill.min.js'}
     ]
   },
   /*
   ** Customize the progress-bar color
   */
   css: [
-    'bootstrap/dist/css/bootstrap.css', {
-      src: '~assets/style.less',
+    'bootstrap/dist/css/bootstrap.css',
+    {
+      src: 'assets/style.less',
       lang: 'less'
-    }],
-  plugins: ['~plugins/bootstrap.js', '~plugins/axiosConfig.js'],
+    }
+  ],
+  plugins: ['~/plugins/bootstrap.js', '~/plugins/axiosConfig.js'],
   loading: {color: '#3B8070'},
   /*
   ** Build configuration

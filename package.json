@@ -34,6 +34,7 @@
     "nuxt": "^1.0.0-rc3",
     "promise.prototype.finally": "^3.0.0",
     "raven-js": "^3.17.0",
+    "vue-msgbox": "^0.2.14",
     "webpack": "^3.5.4"
   },
   "devDependencies": {

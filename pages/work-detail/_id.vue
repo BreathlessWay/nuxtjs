@@ -21,7 +21,7 @@
     </article>
     <section class="work-detail-btn row">
       <div class="col-sm-6 work-detail-btn_good col-xs-12">
-        <good-btn :goodCount="detail.data.vote_count"></good-btn>
+        <good-btn :goodCount.sync="detail.data.vote_count" @input="handleInput"></good-btn>
       </div>
       <div class="col-sm-6 work-detail-btn_share col-xs-12">
         <share-btn></share-btn>
@@ -31,6 +31,7 @@
 </template>
 <script>
   import axios from 'axios'
+  import * as mutationTypes from '../../store/work-detail/mutations'
 
   export default {
     name: 'work-detail',
@@ -54,6 +55,27 @@
     components: {
       'good-btn': require('../../components/good-btn.vue').default,
       'share-btn': require('../../components/share-btn.vue').default
+    },
+    computed: {
+      shareBase () {
+        return this.$store.state.workDetail.shareIcon
+      }
+    },
+    created () {
+      this.$store.dispatch(mutationTypes.GET_SHARE_ICON, {...this.shareBase.request})
+    },
+    methods: {
+      handleInput (val) {
+        this.detail.data.vote_count = val
+        //        axios.post(`articles/${this.$route.params.id}/vote`)
+        //          .then(res => {
+        //            console.log(res)
+        //            this.detail.data.vote_count = val
+        //          })
+        //          .catch(err => {
+        //            alert(err)
+        //          })
+      }
     }
   }
 </script>

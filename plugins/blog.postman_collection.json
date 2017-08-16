@@ -12,7 +12,17 @@
 				"cd1d43e8-d4fa-0976-01eb-3b62e4ef0b3c",
 				"3b25854a-4315-6c5a-c174-8bc03eec3184",
 				"d8a1d6fa-6c37-08a3-b6ec-f62575727e50",
-				"f0c610e2-5f54-ed23-d03f-a2fcf25a3d46"
+				"f0c610e2-5f54-ed23-d03f-a2fcf25a3d46",
+				"13e550a3-4011-8205-9555-1bc9a4ce0a1c"
+			],
+			"owner": "1891893"
+		},
+		{
+			"id": "8f3f0787-2b9f-a93a-9917-4b0e84db2040",
+			"name": "Setting",
+			"description": "获取基本设置",
+			"order": [
+				"eabea9ee-fa25-733a-5af5-2698f6f18c78"
 			],
 			"owner": "1891893"
 		},
@@ -39,7 +49,8 @@
 			"name": "user",
 			"description": "用户相关",
 			"order": [
-				"47182322-17a5-ca05-093c-e09a0cd636b1"
+				"47182322-17a5-ca05-093c-e09a0cd636b1",
+				"b1affd35-ee59-d237-9c0b-1c784793cc9d"
 			],
 			"owner": "1891893"
 		}
@@ -48,6 +59,43 @@
 	"owner": "1891893",
 	"public": false,
 	"requests": [
+		{
+			"id": "13e550a3-4011-8205-9555-1bc9a4ce0a1c",
+			"headers": "Accept: application/json\nAuthorization: Bearer {{token}}\n",
+			"headerData": [
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "必填",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer {{token}}",
+					"description": "如果登录，必填",
+					"enabled": true
+				}
+			],
+			"url": "{{host}}/api/v1/articles/1/vote",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "50478add-a322-971e-f261-b11af646420b",
+			"data": [],
+			"dataMode": "urlencoded",
+			"name": "文章／作品点赞",
+			"description": "/api/v1/articles/{id}/vote\n{id}为要点赞的文章/作品id\n点赞后，再次请求为取消点赞",
+			"descriptionFormat": "html",
+			"time": 1502848788643,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "9f2875be-e100-78f9-f8de-a3bb4161260b"
+		},
 		{
 			"id": "2042afb9-ac0c-9e1c-6827-51247613a573",
 			"headers": "Accept: application/json\nAuthorization: Bearer {{token}}\n",
@@ -256,6 +304,78 @@
 			"responses": []
 		},
 		{
+			"id": "b1affd35-ee59-d237-9c0b-1c784793cc9d",
+			"headers": "Accept: application/json\nAuthorization: Bearer {{token}}\nContent-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "必填",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer {{token}}",
+					"description": "如果登录，必填",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{host}}/api/v1/register",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "50478add-a322-971e-f261-b11af646420b",
+			"data": [
+				{
+					"key": "name",
+					"value": "zhangsan",
+					"description": "昵称",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "email",
+					"value": "syd_8906@126.com",
+					"description": "邮箱",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "qwer1234",
+					"description": "密码",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password_confirmation",
+					"value": "qwer1234",
+					"description": "密码确认",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "用户注册",
+			"description": "用户注册",
+			"descriptionFormat": "html",
+			"time": 1502850644287,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "21b293e0-f736-bfa3-b547-744398171a6a"
+		},
+		{
 			"id": "cd1d43e8-d4fa-0976-01eb-3b62e4ef0b3c",
 			"headers": "Accept: application/json\nAuthorization: Bearer {{token}}\n",
 			"headerData": [
@@ -381,6 +501,43 @@
 			"description": "评论文章/作品",
 			"collectionId": "50478add-a322-971e-f261-b11af646420b",
 			"responses": []
+		},
+		{
+			"id": "eabea9ee-fa25-733a-5af5-2698f6f18c78",
+			"headers": "Accept: application/json\nAuthorization: Bearer {{token}}\n",
+			"headerData": [
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "必填",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer {{token}}",
+					"description": "如果登录，必填",
+					"enabled": true
+				}
+			],
+			"url": "{{host}}/api/v1/settings",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "50478add-a322-971e-f261-b11af646420b",
+			"data": null,
+			"dataMode": "params",
+			"name": "获取基本设置列表",
+			"description": "获取基本信息 微博微信等",
+			"descriptionFormat": "html",
+			"time": 1502848271962,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "8f3f0787-2b9f-a93a-9917-4b0e84db2040"
 		},
 		{
 			"id": "f0c610e2-5f54-ed23-d03f-a2fcf25a3d46",

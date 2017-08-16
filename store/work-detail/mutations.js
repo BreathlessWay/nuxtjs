@@ -1,0 +1,3 @@
+export const GET_SHARE_ICON = 'GET_SHARE_ICON'
+
+export const UPDATE_SHARE_ICON = 'UPDATE_SHARE_ICON'

@@ -1,6 +1,6 @@
 <template>
   <section class="good-btn">
-    <a href="#">
+    <a href="#" @click.prevent="handleClick">
       <img src="../static/good.png" alt="" width="23" height="24">
     </a>
     <span>{{goodCount}}人赞过</span>
@@ -13,6 +13,14 @@
       goodCount: {
         type: Number,
         default: 0
+      }
+    },
+    data () {
+      return {}
+    },
+    methods: {
+      handleClick () {
+        this.$emit('input', this.goodCount + 1)
       }
     }
   }

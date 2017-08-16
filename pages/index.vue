@@ -109,7 +109,7 @@
       background: url("../static/banner.png") @banner-background no-repeat center;
       background-size: cover;
       width: 100%;
-      height: calc(~"100vh - 160px");
+      height: calc(~"100vh - 140px");
     }
 
     .blog-index_wrap {

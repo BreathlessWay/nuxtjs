@@ -59,14 +59,13 @@
         <section class="row">
           <div class="col-sm-6 col-xs-12 text-center">
             <p class="blog-footer_btn">
-              <a href="http://weibo.com/3753729900/profile?rightmod=1
-&wvr=6&mod=personinfo&is_all=1">
+              <a :href="baseInfo.weibo_link" target="_blank">
                 <img src="../static/footer-1.png" alt="新浪微博">
               </a>
-              <a href="https://dribbble.com/smalltiger">
+              <a :href="baseInfo.dribbble_link" target="_blank">
                 <img src="../static/footer-2.png" alt="dribbble">
               </a>
-              <a href="mailto:nianzuotian@163.com">
+              <a :href="'mailto:'+baseInfo.email" target="_blank">
                 <img src="../static/footer-3.png" alt="邮箱">
               </a>
             </p>
@@ -74,7 +73,7 @@
               Copyright © 2017 SMALLTIGER </p>
           </div>
           <div class="col-sm-6 col-xs-12 blog-footer_code">
-            <img src="../static/footer-4.png" alt="二维码" width="126" height="126"> &nbsp;&nbsp;&nbsp; <img src="../static/footer-5.png" alt="二维码" width="126" height="126">
+            <img :src="baseInfo.wechat_personal" alt="个人微信号" width="126" height="126"> &nbsp;&nbsp;&nbsp; <img :src="baseInfo.wechat_public" alt="公众微信号" width="126" height="126">
           </div>
         </section>
       </article>
@@ -91,7 +90,7 @@
       margin: auto;
     }
     .blog-header {
-      height: 160px;
+      height: 140px;
       .navbar-default {
         padding: 34px 0 34px;
         border: none;
@@ -182,11 +181,22 @@
   }
 </style>
 <script>
+  import axios from 'axios'
+
   export default {
     data () {
-      return {}
+      return {
+        baseInfo: {}
+      }
     },
     created () {
+      axios.get('settings')
+        .then(res => {
+          this.baseInfo = res.data
+        })
+        .catch(err => {
+          alert(err)
+        })
     }
   }
 </script>

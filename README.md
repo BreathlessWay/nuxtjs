@@ -27,3 +27,4 @@ For detailed explanation on how things work, checkout the [Nuxt.js docs](https:/
 3. axios配置
 4. require('../components/component.vue').default引入组件
 5. build:{extractCSS: true} 开启抽离css
+6. store需要返回一个function,export default store = () => new Vuex.Store({...})

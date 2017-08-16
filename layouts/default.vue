@@ -19,34 +19,34 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-              <li class="active text-center">
-                <nuxt-link to="/">
+              <nuxt-link tag="li" active-class="active" class="text-center" to="/" exact>
+                <a>
                   <span class="blog-header_en">Work</span>
                   <br>
                   <span class="blog-header_cn">作品</span>
-                </nuxt-link>
-              </li>
-              <li class="text-center">
-                <nuxt-link to="/about">
+                </a>
+              </nuxt-link>
+              <nuxt-link tag="li" active-class="active" class="text-center" to="/me" exact>
+                <a>
                   <span class="blog-header_en">Me</span>
                   <br>
                   <span class="blog-header_cn">我</span>
-                </nuxt-link>
-              </li>
-              <li class="text-center">
-                <nuxt-link to="/">
+                </a>
+              </nuxt-link>
+              <nuxt-link tag="li" active-class="active" class="text-center" to="/article" exact>
+                <a>
                   <span class="blog-header_en">Blog</span>
                   <br>
                   <span class="blog-header_cn">文章</span>
-                </nuxt-link>
-              </li>
-              <li class="text-center">
-                <nuxt-link to="/">
+                </a>
+              </nuxt-link>
+              <nuxt-link tag="li" active-class="active" class="text-center" to="/share" exact>
+                <a>
                   <span class="blog-header_en">Share</span>
                   <br>
                   <span class="blog-header_cn">分享</span>
-                </nuxt-link>
-              </li>
+                </a>
+              </nuxt-link>
             </ul>
           </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->

@@ -20,13 +20,10 @@
       </section>
     </article>
     <section class="work-detail-btn row">
-      <div class="col-xs-6 work-detail-btn_good">
-        <a href="#">
-          <img src="../../static/good.png" alt="" width="23" height="24">
-        </a>
-        <span>{{detail.data.vote_count}}人赞过</span>
+      <div class="col-sm-6 work-detail-btn_good col-xs-12">
+        <good-btn :goodCount="detail.data.vote_count"></good-btn>
       </div>
-      <div class="col-xs-6 work-detail-btn_share">
+      <div class="col-sm-6 work-detail-btn_share col-xs-12">
         <share-btn></share-btn>
       </div>
     </section>
@@ -55,6 +52,7 @@
         })
     },
     components: {
+      'good-btn': require('../../components/good-btn.vue').default,
       'share-btn': require('../../components/share-btn.vue').default
     }
   }
@@ -65,6 +63,11 @@
   .work-detail {
     max-width: @max-width;
     margin: auto;
+    @media (max-width: 760px) {
+      & {
+        margin-top: 15px;
+      }
+    }
     .work-detail_content {
       padding: 40px;
       background: @background-color-default;
@@ -111,19 +114,27 @@
     .work-detail-btn {
       margin: 15px 0;
       background: @background-color-default;
-      padding: 35px 70px;
+      padding: 35px;
       font-size: 12px;
       color: @color-default;
-      .work-detail-btn_good {
-        img {
-          vertical-align: baseline;
-        }
-        span {
-          margin-left: 5px;
-          vertical-align: text-bottom;
-        }
+      .work-detail-btn_good.col-xs-12 {
       }
-      .work-detail-btn_share {
+      .work-detail-btn_share.col-xs-12 {
+        text-align: right;
+      }
+      @media (max-width: 750px) {
+        & {
+          padding: 20px 0;
+        }
+
+        .work-detail-btn_good.col-xs-12 {
+          text-align: center;
+          margin-bottom: 20px;
+        }
+
+        .work-detail-btn_share.col-xs-12 {
+          text-align: center;
+        }
       }
     }
   }

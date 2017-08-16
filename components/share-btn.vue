@@ -24,7 +24,6 @@
   @import "../assets/var.less";
 
   .share-btn {
-    text-align: right;
     img {
       vertical-align: middle;
       margin-right: 10px;

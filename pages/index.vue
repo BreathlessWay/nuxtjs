@@ -116,7 +116,7 @@
       background: #fff;
     }
     .blog-index_content {
-      max-width: 1349px;
+      max-width: 1333px;
       margin: auto;
       .nav > li > a {
         color: @color-default;

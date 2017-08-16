@@ -2,7 +2,7 @@
   <article class="blog">
     <header class="blog-header">
       <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid" style="max-width:1366px;">
+        <div class="container-fluid" style="max-width:1333px;">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -54,27 +54,29 @@
     </header>
     <nuxt/>
     <footer class="container-fluid blog-footer">
-      <section class="row">
-        <div class="col-sm-6 col-xs-12 text-center">
-          <p class="blog-footer_btn">
-            <a href="http://weibo.com/3753729900/profile?rightmod=1
+      <article style="max-width: 1333px;margin: auto">
+        <section class="row">
+          <div class="col-sm-6 col-xs-12 text-center">
+            <p class="blog-footer_btn">
+              <a href="http://weibo.com/3753729900/profile?rightmod=1
 &wvr=6&mod=personinfo&is_all=1">
-              <img src="../static/footer-1.png" alt="新浪微博">
-            </a>
-            <a href="https://dribbble.com/smalltiger">
-              <img src="../static/footer-2.png" alt="dribbble">
-            </a>
-            <a href="mailto:nianzuotian@163.com">
-              <img src="../static/footer-3.png" alt="邮箱">
-            </a>
-          </p>
-          <p class="blog-footer_copyright">
-            Copyright © 2017 SMALLTIGER </p>
-        </div>
-        <div class="col-sm-6 col-xs-12 blog-footer_code">
-          <img src="../static/footer-4.png" alt="二维码" width="126" height="126"> &nbsp;&nbsp;&nbsp; <img src="../static/footer-5.png" alt="二维码" width="126" height="126">
-        </div>
-      </section>
+                <img src="../static/footer-1.png" alt="新浪微博">
+              </a>
+              <a href="https://dribbble.com/smalltiger">
+                <img src="../static/footer-2.png" alt="dribbble">
+              </a>
+              <a href="mailto:nianzuotian@163.com">
+                <img src="../static/footer-3.png" alt="邮箱">
+              </a>
+            </p>
+            <p class="blog-footer_copyright">
+              Copyright © 2017 SMALLTIGER </p>
+          </div>
+          <div class="col-sm-6 col-xs-12 blog-footer_code">
+            <img src="../static/footer-4.png" alt="二维码" width="126" height="126"> &nbsp;&nbsp;&nbsp; <img src="../static/footer-5.png" alt="二维码" width="126" height="126">
+          </div>
+        </section>
+      </article>
     </footer>
   </article>
 </template>

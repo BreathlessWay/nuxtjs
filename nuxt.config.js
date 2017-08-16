@@ -40,7 +40,14 @@ module.exports = {
       lang: 'less'
     }
   ],
-  plugins: ['~/plugins/bootstrap.js', '~/plugins/axiosConfig.js'],
+  plugins: [
+    '~/plugins/bootstrap.js',
+    '~/plugins/axiosConfig.js',
+    {
+      ssr: false, // only included on client-side
+      src: '~/plugins/sentry'
+    }
+  ],
   loading: {color: '#3B8070'},
   /*
   ** Build configuration

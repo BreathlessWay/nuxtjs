@@ -33,6 +33,7 @@
     "jquery": "^3.2.1",
     "nuxt": "^1.0.0-rc3",
     "promise.prototype.finally": "^3.0.0",
+    "raven-js": "^3.17.0",
     "webpack": "^3.5.4"
   },
   "devDependencies": {

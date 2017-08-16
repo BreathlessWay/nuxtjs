@@ -43,6 +43,7 @@ module.exports = {
   plugins: [
     '~/plugins/bootstrap.js',
     '~/plugins/axiosConfig.js',
+    '~/plugins/format.js',
     {
       ssr: false, // only included on client-side
       src: '~/plugins/sentry'
@@ -54,6 +55,10 @@ module.exports = {
   */
   env: {
     baseUrl: 'http://api.smalltiger.me/api/v1/'
+  },
+  transition: {
+    name: 'page',
+    mode: 'out-in'
   },
   build: {
     /*

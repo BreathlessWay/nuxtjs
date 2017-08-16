@@ -11,7 +11,7 @@
         <loading v-show="showLoading"></loading>
         <ul class="blog-index_img" v-show="!showLoading && articleBase.response.list.length>0">
           <li v-for="(list,index) in articleBase.response.list" :key="index" class="col-sm-4">
-            <img :src=list.cover_link :alt=list.title>
+            <img :src=list.cover_link :alt=list.title class="blog-index_workList" @click="getWorkDetail(list.id)">
           </li>
           <li class="clearfix"></li>
         </ul>
@@ -41,7 +41,7 @@
         {hid: 'description', name: 'description', content: 'smalltiger blog'}
       ]
     },
-    asyncData ({store, error}) {
+    asyncData ({error}) {
       return axios.get('tags')
         .then(res => {
           const title = []
@@ -93,6 +93,9 @@
         const page = params.page + 1
         params.count = page * params.count
         this.getArticleList(params)
+      },
+      getWorkDetail (id) {
+        this.$router.push({name: 'work-detail-id', params: {id}})
       }
     }
   }
@@ -102,8 +105,6 @@
   @import "../assets/var";
 
   .blog-index {
-    margin-top: 160px;
-
     .blog-index_banner {
       background: url("../static/banner.png") @banner-background no-repeat center;
       background-size: cover;
@@ -113,10 +114,10 @@
 
     .blog-index_wrap {
       width: 100%;
-      background: #fff;
+      background: @background-color-default;
     }
     .blog-index_content {
-      max-width: 1333px;
+      max-width: @max-width;
       margin: auto;
       .nav > li > a {
         color: @color-default;
@@ -182,19 +183,18 @@
         height: calc(~"100vh - 50px");
       }
 
-      & {
-        margin-top: 50px;
-      }
-
       .blog-index_content {
         .nav-pills {
           display: flex;
           justify-content: space-between;
-          li{
+          li {
             padding: 15px 0 0;
           }
         }
       }
+    }
+    .blog-index_workList {
+      cursor: pointer;
     }
   }
 </style>

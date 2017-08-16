@@ -3,7 +3,7 @@
     <header class="blog-index_banner"></header>
     <section class="blog-index_wrap">
       <article class="blog-index_content">
-        <ul class="nav nav-pills nav-justified">
+        <ul class="nav nav-pills text-center">
           <li role="presentation" v-for="(list,index) in title" :key="index" :class="{active:index===activeIndex}">
             <a href="#" @click.prevent="handleTabsClick(index,list.name)">{{list.name}}</a>
           </li>
@@ -102,13 +102,13 @@
   @import "../assets/var";
 
   .blog-index {
-    margin-top: 90px;
+    margin-top: 160px;
 
     .blog-index_banner {
-      background: url("../static/banner.png") @banner-background no-repeat center 70px fixed;
+      background: url("../static/banner.png") @banner-background no-repeat center;
       background-size: cover;
       width: 100%;
-      height: calc(~"100vh - 70px");
+      height: calc(~"100vh - 160px");
     }
 
     .blog-index_wrap {
@@ -126,6 +126,11 @@
         &:hover {
           background: none;
         }
+      }
+      .nav-pills > li {
+        display: inline-block;
+        float: none;
+        padding: 45px 15px;
       }
       .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
         color: @color-active;
@@ -172,7 +177,7 @@
         }
       }
     }
-    @media (max-width: 768px) {
+    @media (max-width: 760px) {
       .blog-index_banner {
         height: calc(~"100vh - 50px");
       }
@@ -181,14 +186,14 @@
         margin-top: 50px;
       }
 
-      .blog-index_banner {
-        background-position-y: 50px;
-      }
-
-      .nav-justified {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
+      .blog-index_content {
+        .nav-pills {
+          display: flex;
+          justify-content: space-between;
+          li{
+            padding: 15px 0 0;
+          }
+        }
       }
     }
   }

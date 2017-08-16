@@ -12,7 +12,7 @@
               <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="/">
-              <img src="../static/logo.png" alt="logo" width="80" height="40">
+              <img src="../static/logo.png" alt="logo">
             </a>
           </div>
 
@@ -85,12 +85,12 @@
   .blog {
     .blog-header {
       .navbar-default {
+        padding: 34px 0 34px;
         border: none;
         background: #fff;
       }
-      .navbar-brand {
-        padding: 5px 0;
-        margin-left: 15px;
+      .navbar-default .navbar-nav > li {
+        padding: 0 20px;
       }
       .navbar-default .navbar-nav > li > a {
         color: @color-default;
@@ -130,8 +130,12 @@
 
   @media (min-width: 768px) {
     .blog .blog-header .navbar-brand {
-      padding: 15px 0;
-      margin-left: 30px;
+      margin-left: 15px;
+      padding: 0;
+      img {
+        margin-top: -5px;
+        width: 152px;
+      }
     }
 
     #bs-example-navbar-collapse-1 {
@@ -140,14 +144,19 @@
   }
 
   @media (max-width: 760px) {
+    .blog .blog-header .navbar-default {
+      padding: 5px 0;
+    }
+
     .blog-header {
       .navbar-brand {
         img {
           position: absolute;
-          top: 5px;
+          top: 10px;
           left: 0;
           right: 0;
           margin: auto;
+          width: 80px;
         }
       }
     }

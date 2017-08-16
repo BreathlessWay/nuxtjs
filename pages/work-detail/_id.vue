@@ -1,21 +1,34 @@
 <template>
   <article class="work-detail">
-    <header class="row">
-      <h3 class="work-detail_title col-sm-8 col-xs-12">{{detail.data.title}}</h3>
-      <aside class="col-sm-4 work-detail_swiper hidden-xs">
-        <span class="glyphicon glyphicon-menu-left" v-show="detail.data.prev_slug" @click="$router.push({name:'work-detail-id',params:{id:detail.data.prev_slug}})"></span>
-        <span>|</span>
-        <span class="glyphicon glyphicon-menu-right" v-show="detail.data.next_slug" @click="$router.push({name:'work-detail-id',params:{id:detail.data.next_slug}})"></span>
-      </aside>
-      <p class="col-xs-12 work-detail_count">
-        <span class="glyphicon glyphicon-eye-open"></span>
-        <span>{{detail.data.view_count}}</span>
-        <span class="glyphicon glyphicon-time"></span>
-        <span>{{new Date(detail.data.published_at).Format('yyyy.mm.dd')}}</span>
-      </p>
-    </header>
-    <section class="text-center">
-      <img :src="detail.data.cover_link" :alt="detail.data.desc" style="max-width: 100%">
+    <article class="work-detail_content">
+      <header class="row">
+        <h3 class="work-detail_title col-sm-8 col-xs-12">{{detail.data.title}}</h3>
+        <aside class="col-sm-4 work-detail_swiper hidden-xs">
+          <span class="glyphicon glyphicon-menu-left" v-show="detail.data.prev_slug" @click="$router.push({name:'work-detail-id',params:{id:detail.data.prev_slug}})"></span>
+          <span>|</span>
+          <span class="glyphicon glyphicon-menu-right" v-show="detail.data.next_slug" @click="$router.push({name:'work-detail-id',params:{id:detail.data.next_slug}})"></span>
+        </aside>
+        <p class="col-xs-12 work-detail_count">
+          <span class="glyphicon glyphicon-eye-open"></span>
+          <span>{{detail.data.view_count}}</span>
+          <span class="glyphicon glyphicon-time"></span>
+          <span>{{new Date(detail.data.published_at).Format('yyyy.mm.dd')}}</span>
+        </p>
+      </header>
+      <section class="text-center">
+        <img :src="detail.data.cover_link" :alt="detail.data.desc" style="max-width: 100%">
+      </section>
+    </article>
+    <section class="work-detail-btn row">
+      <div class="col-xs-6 work-detail-btn_good">
+        <a href="#">
+          <img src="../../static/good.png" alt="" width="23" height="24">
+        </a>
+        <span>{{detail.data.vote_count}}人赞过</span>
+      </div>
+      <div class="col-xs-6 work-detail-btn_share">
+        <share-btn></share-btn>
+      </div>
     </section>
   </article>
 </template>
@@ -40,6 +53,9 @@
         .catch(err => {
           error({statusCode: err.status || 404, message: err.message || 'Page not found'})
         })
+    },
+    components: {
+      'share-btn': require('../../components/share-btn.vue').default
     }
   }
 </script>
@@ -49,8 +65,10 @@
   .work-detail {
     max-width: @max-width;
     margin: auto;
-    padding: 40px;
-    background: @background-color-default;
+    .work-detail_content {
+      padding: 40px;
+      background: @background-color-default;
+    }
     .work-detail_title {
       color: @color-active;
       font-size: 24px;
@@ -88,6 +106,24 @@
         &:nth-of-type(2) {
           margin-right: 44px;
         }
+      }
+    }
+    .work-detail-btn {
+      margin: 15px 0;
+      background: @background-color-default;
+      padding: 35px 70px;
+      font-size: 12px;
+      color: @color-default;
+      .work-detail-btn_good {
+        img {
+          vertical-align: baseline;
+        }
+        span {
+          margin-left: 5px;
+          vertical-align: text-bottom;
+        }
+      }
+      .work-detail-btn_share {
       }
     }
   }

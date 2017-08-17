@@ -47,10 +47,6 @@
       margin: auto;
     }
     .me-index_download {
-      p {
-        margin: 0;
-        padding: 0;
-      }
       cursor: pointer;
       position: absolute;
       top: 40%;

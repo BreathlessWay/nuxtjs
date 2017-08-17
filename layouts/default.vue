@@ -73,7 +73,11 @@
               Copyright © 2017 SMALLTIGER </p>
           </div>
           <div class="col-sm-6 col-xs-12 blog-footer_code">
-            <img :src="baseConfig.wechat_personal" alt="个人微信号" width="126" height="126"> &nbsp;&nbsp;&nbsp; <img :src="baseConfig.wechat_public" alt="公众微信号" width="126" height="126">
+            <p>
+              <img :src="baseConfig.wechat_public" alt="公众微信号" width="126" height="126">
+
+            </p>
+            <img :src="baseConfig.wechat_personal" alt="个人微信号" width="126" height="126"> &nbsp;&nbsp;&nbsp;
           </div>
         </section>
       </article>
@@ -115,10 +119,6 @@
     }
     .blog-footer {
       padding: 30px 15px;
-      p {
-        margin: 0;
-        padding: 0;
-      }
       margin-top: 22px;
       background: @background-color-default;
       .blog-footer_copyright {

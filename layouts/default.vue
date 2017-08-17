@@ -191,7 +191,7 @@
         margin-top: 30px;
       }
       .blog-footer_btn {
-        padding-top: 10px!important;
+        padding-top: 10px !important;
       }
     }
   }
@@ -209,11 +209,8 @@
     },
     created () {
       this.$store.dispatch(mutationTypes.GET_BASE_SETTING)
-        .catch(() => {
-          this.$message({
-            type: 'error',
-            message: '接口请求失败'
-          })
+        .catch(err => {
+          alert(err)
         })
     }
   }

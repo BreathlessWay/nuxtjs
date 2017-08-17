@@ -38,14 +38,12 @@ module.exports = {
     {
       src: 'assets/style.less',
       lang: 'less'
-    },
-    'element-ui/lib/theme-default/index.css'
+    }
   ],
   plugins: [
     '~/plugins/bootstrap.js',
     '~/plugins/axiosConfig.js',
     '~/plugins/format.js',
-    '~/plugins/element-ui',
     {
       ssr: false, // only included on client-side
       src: '~/plugins/vuePlugin.js'

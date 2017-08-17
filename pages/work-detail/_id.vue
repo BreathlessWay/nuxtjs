@@ -72,16 +72,10 @@
             const info = res > this.detail.data.vote_count ? '点赞成功' : '取消点赞'
             const type = res > this.detail.data.vote_count ? 'success' : 'info'
             this.detail.data.vote_count = val
-            this.$message({
-              type: type,
-              message: info
-            })
+            console.log(info, type)
           })
           .catch(err => {
-            this.$message({
-              type: 'error',
-              message: err
-            })
+            alert(err)
           })
       }
     }

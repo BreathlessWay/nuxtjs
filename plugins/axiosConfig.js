@@ -55,6 +55,12 @@ export default ({app, store, redirect}) => {
     return response
   }, function (error) {
     // Do something with response error
-    return Promise.reject(error)
+    let errorReason = ''
+    if (+error.response.status === 401) {
+      errorReason = '没有操作权限，请先登录'
+    } else {
+      errorReason = '接口请求失败'
+    }
+    return Promise.reject(errorReason)
   })
 }

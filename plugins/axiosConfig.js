@@ -28,6 +28,9 @@ export default ({app, store, redirect}) => {
     // as well as 'GET' downloads
     progress: function (progressEvent) {
       // Do whatever you want with the native progress event
+    },
+    validateStatus: function (status) {
+      return status >= 200 && status < 300
     }
   }
 

@@ -60,12 +60,12 @@
           <div class="col-sm-6 col-xs-12 text-center">
             <p class="blog-footer_btn">
               <a :href="baseConfig.weibo_link" target="_blank">
-                <img src="../static/footer-1.png" alt="新浪微博">
+                <img src="../static/footer-2.png" alt="新浪微博">
               </a>
               <a :href="baseConfig.dribbble_link" target="_blank">
-                <img src="../static/footer-2.png" alt="dribbble">
+                <img src="../static/footer-1.png" alt="dribbble">
               </a>
-              <a :href="'mailto:'+baseConfig.email" target="_blank">
+              <a :href="'mailto:'+baseConfig.email">
                 <img src="../static/footer-3.png" alt="邮箱">
               </a>
             </p>
@@ -193,8 +193,11 @@
     },
     created () {
       this.$store.dispatch(mutationTypes.GET_BASE_SETTING)
-        .catch(err => {
-          alert(err)
+        .catch(() => {
+          this.$message({
+            type: 'error',
+            message: '接口请求失败'
+          })
         })
     }
   }

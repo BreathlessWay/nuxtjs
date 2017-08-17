@@ -8,23 +8,24 @@
             <a href="#" @click.prevent="handleTabsClick(index,list.name)">{{list.name}}</a>
           </li>
         </ul>
-        <loading v-show="showLoading"></loading>
-        <ul class="blog-index_img" v-show="!showLoading && articleBase.response.list.length>0">
-          <li v-for="(list,index) in articleBase.response.list" :key="index" class="col-sm-4">
-            <img :src=list.cover_link :alt=list.title class="blog-index_workList" @click="getWorkDetail(list.id)">
-          </li>
-          <li class="clearfix"></li>
-        </ul>
-        <div class="text-center" v-show="!showLoading && articleBase.response.list.length === 0">
-          <div class="white-space"></div>
-          <img src="../static/index-no-data.png" alt="暂无作品" width="298" height="241">
-          <div class="white-space"></div>
-        </div>
-        <aside v-show="!showLoading" class="blog-index_more text-center">
-          <button type="button" class="btn btn-default" v-show="articleBase.response.hasMore" @click="getMoreArticle">
-            <span>查看更多</span>
-          </button>
-        </aside>
+        <section id="blog-index_list">
+          <ul class="blog-index_img" v-show="articleBase.response.list.length>0">
+            <li v-for="(list,index) in articleBase.response.list" :key="index" class="col-sm-4">
+              <img :src=list.cover_link :alt=list.title class="blog-index_workList" @click="getWorkDetail(list.id)">
+            </li>
+            <li class="clearfix"></li>
+          </ul>
+          <div class="text-center" v-show="articleBase.response.list.length === 0">
+            <div class="white-space"></div>
+            <img src="../static/index-no-data.png" alt="暂无作品" width="298" height="241">
+            <div class="white-space"></div>
+          </div>
+          <aside class="blog-index_more text-center">
+            <button type="button" class="btn btn-default" v-show="articleBase.response.hasMore" @click="getMoreArticle">
+              <span>查看更多</span>
+            </button>
+          </aside>
+        </section>
       </article>
     </section>
   </article>
@@ -58,8 +59,7 @@
     },
     data () {
       return {
-        activeIndex: 0,
-        showLoading: true
+        activeIndex: 0
       }
     },
     computed: {
@@ -68,20 +68,23 @@
       }
     },
     components: {
-      'loading': require('~/components/loading.vue').default
+      //      'loading': require('~/components/loading.vue').default
     },
     mounted () {
       this.getArticleList({tags: this.title[0].name})
     },
     methods: {
       getArticleList (params) {
-        this.showLoading = true
+        const _loading = this.$loading({target: document.getElementById('blog-index_list'), text: '加载中...'})
         this.$store.dispatch(mutationTypes.GET_ARTICLE_LIST, {...this.articleBase.request, ...params})
-          .catch(err => {
-            alert(err)
+          .catch(() => {
+            this.$message({
+              type: 'error',
+              message: '接口请求失败'
+            })
           })
           .finally(() => {
-            this.showLoading = false
+            _loading.close()
           })
       },
       handleTabsClick (index, name) {
@@ -103,6 +106,10 @@
 
 <style lang="less">
   @import "../assets/var";
+
+  #blog-index_list {
+    min-height: 50px;
+  }
 
   .blog-index {
     .blog-index_banner {

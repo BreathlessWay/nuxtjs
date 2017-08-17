@@ -69,10 +69,19 @@
         axios.post(`articles/${this.$route.params.id}/vote`)
           .then(res => {
             console.log(res)
+            const info = res > this.detail.data.vote_count ? '点赞成功' : '取消点赞'
+            const type = res > this.detail.data.vote_count ? 'success' : 'info'
             this.detail.data.vote_count = val
+            this.$message({
+              type: type,
+              message: info
+            })
           })
-          .catch(err => {
-            alert(err)
+          .catch(() => {
+            this.$message({
+              type: 'error',
+              message: '点赞失败'
+            })
           })
       }
     }

@@ -73,11 +73,16 @@
               Copyright © 2017 SMALLTIGER </p>
           </div>
           <div class="col-sm-6 col-xs-12 blog-footer_code">
-            <p>
+            <p class="col-xs-6">
               <img :src="baseConfig.wechat_public" alt="公众微信号" width="126" height="126">
-
+              <br>
+              <span>微信公众号</span>
             </p>
-            <img :src="baseConfig.wechat_personal" alt="个人微信号" width="126" height="126"> &nbsp;&nbsp;&nbsp;
+            <p class="col-xs-6">
+              <img :src="baseConfig.wechat_personal" alt="个人微信号" width="126" height="126">
+              <br>
+              <span>微信公众号</span>
+            </p>
           </div>
         </section>
       </article>

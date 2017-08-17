@@ -77,10 +77,10 @@
               message: info
             })
           })
-          .catch(() => {
+          .catch(err => {
             this.$message({
               type: 'error',
-              message: '点赞失败'
+              message: err
             })
           })
       }

@@ -59,13 +59,13 @@
         <section class="row">
           <div class="col-sm-6 col-xs-12 text-center">
             <p class="blog-footer_btn">
-              <a :href="baseInfo.weibo_link" target="_blank">
+              <a :href="baseConfig.weibo_link" target="_blank">
                 <img src="../static/footer-1.png" alt="新浪微博">
               </a>
-              <a :href="baseInfo.dribbble_link" target="_blank">
+              <a :href="baseConfig.dribbble_link" target="_blank">
                 <img src="../static/footer-2.png" alt="dribbble">
               </a>
-              <a :href="'mailto:'+baseInfo.email" target="_blank">
+              <a :href="'mailto:'+baseConfig.email" target="_blank">
                 <img src="../static/footer-3.png" alt="邮箱">
               </a>
             </p>
@@ -73,7 +73,7 @@
               Copyright © 2017 SMALLTIGER </p>
           </div>
           <div class="col-sm-6 col-xs-12 blog-footer_code">
-            <img :src="baseInfo.wechat_personal" alt="个人微信号" width="126" height="126"> &nbsp;&nbsp;&nbsp; <img :src="baseInfo.wechat_public" alt="公众微信号" width="126" height="126">
+            <img :src="baseConfig.wechat_personal" alt="个人微信号" width="126" height="126"> &nbsp;&nbsp;&nbsp; <img :src="baseConfig.wechat_public" alt="公众微信号" width="126" height="126">
           </div>
         </section>
       </article>
@@ -135,7 +135,7 @@
     }
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: @client-max-width) {
     .blog .blog-header .navbar-brand {
       margin-left: 15px;
       padding: 0;
@@ -150,7 +150,7 @@
     }
   }
 
-  @media (max-width: 760px) {
+  @media (max-width: @client-max-width) {
     .blog .blog-header {
       height: 60px;
     }
@@ -181,19 +181,18 @@
   }
 </style>
 <script>
-  import axios from 'axios'
+  import * as mutationTypes from '../store/home/mutations'
+  import { mapGetters } from 'vuex'
 
   export default {
     data () {
-      return {
-        baseInfo: {}
-      }
+      return {}
+    },
+    computed: {
+      ...mapGetters(['baseConfig'])
     },
     created () {
-      axios.get('settings')
-        .then(res => {
-          this.baseInfo = res.data
-        })
+      this.$store.dispatch(mutationTypes.GET_BASE_SETTING)
         .catch(err => {
           alert(err)
         })

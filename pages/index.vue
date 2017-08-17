@@ -178,7 +178,7 @@
         }
       }
     }
-    @media (max-width: 760px) {
+    @media (max-width: @client-max-width) {
       .blog-index_banner {
         height: calc(~"100vh - 50px");
       }

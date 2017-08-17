@@ -38,6 +38,8 @@ export default ({app, store, redirect}) => {
   // 添加一个请求拦截器
   axios.interceptors.request.use(function (config) {
     // Do something before request is sent
+    config.headers.Accept = 'application/json'
+    config.headers.Authorization = 'token'
     return config
   }, function (error) {
     // Do something with request error

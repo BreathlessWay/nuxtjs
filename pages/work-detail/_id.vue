@@ -66,15 +66,14 @@
     },
     methods: {
       handleInput (val) {
-        this.detail.data.vote_count = val
-        //        axios.post(`articles/${this.$route.params.id}/vote`)
-        //          .then(res => {
-        //            console.log(res)
-        //            this.detail.data.vote_count = val
-        //          })
-        //          .catch(err => {
-        //            alert(err)
-        //          })
+        axios.post(`articles/${this.$route.params.id}/vote`)
+          .then(res => {
+            console.log(res)
+            this.detail.data.vote_count = val
+          })
+          .catch(err => {
+            alert(err)
+          })
       }
     }
   }
@@ -144,7 +143,7 @@
       .work-detail-btn_share.col-xs-12 {
         text-align: right;
       }
-      @media (max-width: 750px) {
+      @media (max-width: @client-max-width) {
         & {
           padding: 20px 0;
         }

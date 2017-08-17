@@ -14,7 +14,8 @@ const state = {
       list: [],
       total: 0
     }
-  }
+  },
+  baseSetting: {}
 }
 
 const mutations = {
@@ -23,11 +24,19 @@ const mutations = {
       ...state.articleBase,
       ...data
     })
+  },
+  [mutationTypes.UPDATE_BASE_SETTING] (state, data) {
+    state.baseSetting = data
   }
 }
 
 export default {
   state,
   mutations,
-  actions
+  actions,
+  getters: {
+    baseConfig: state => {
+      return state.baseSetting
+    }
+  }
 }

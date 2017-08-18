@@ -42,3 +42,14 @@ For detailed explanation on how things work, checkout the [Nuxt.js docs](https:/
 5. build:{extractCSS: true} 开启抽离css
 6. store需要返回一个function,export default store = () => new Vuex.Store({...})
 7. 添加plugins，需要重新构建
+8. 动态设置head：
+  >
+      head () {
+            return {
+              title: this.detail.data.title,
+              meta: [
+                {hid: 'description', name: 'description', content: this.detail.data.desc}
+              ]
+            }
+      }
+  >

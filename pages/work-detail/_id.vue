@@ -35,11 +35,13 @@
 
   export default {
     name: 'work-detail',
-    head: {
-      title: '作品详情',
-      meta: [
-        {hid: 'description', name: 'description', content: 'smalltiger blog'}
-      ]
+    head () {
+      return {
+        title: this.detail.data.title,
+        meta: [
+          {hid: 'description', name: 'description', content: this.detail.data.desc}
+        ]
+      }
     },
     asyncData ({params, error}) {
       return axios.get(`articles/${params.id}`)
@@ -62,6 +64,7 @@
       }
     },
     created () {
+      console.log(this.head)
       this.$store.dispatch(mutationTypes.GET_SHARE_ICON, {...this.shareBase.request})
     },
     methods: {

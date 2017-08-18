@@ -35,7 +35,7 @@
 
   export default {
     head: {
-      title: 'Home',
+      title: '大胖的博客',
       meta: [
         {hid: 'description', name: 'description', content: 'smalltiger blog'}
       ]

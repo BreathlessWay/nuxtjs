@@ -1,4 +1,3 @@
-const webpack = require('webpack')
 module.exports = {
   /*
   ** Headers of the page
@@ -24,24 +23,25 @@ module.exports = {
       {hid: 'description', name: 'description', content: 'Nuxt.js project'}
     ],
     link: [
-      {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}
+      {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'},
+      {rel: 'stylesheet', href: 'https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css'}
     ],
     script: [
-      {src: 'https://cdn.bootcss.com/babel-polyfill/6.23.0/polyfill.min.js'}
+      {src: 'https://cdn.bootcss.com/babel-polyfill/6.23.0/polyfill.min.js'},
+      {src: 'https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js'},
+      {src: 'https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js'}
     ]
   },
   /*
   ** Customize the progress-bar color
   */
   css: [
-    'bootstrap/dist/css/bootstrap.css',
     {
       src: 'assets/style.less',
       lang: 'less'
     }
   ],
   plugins: [
-    '~/plugins/bootstrap.js',
     '~/plugins/axiosConfig.js',
     '~/plugins/format.js',
     {
@@ -70,14 +70,7 @@ module.exports = {
     */
     // analyze: true,
     extractCSS: true,
-    plugins: [
-      new webpack.ProvidePlugin({
-        jQuery: 'jquery',
-        $: 'jquery',
-        jquery: 'jquery'
-      })
-    ],
-    vendor: ['axios', 'jquery', 'bootstrap'],
+    vendor: ['axios'],
     extend (config, ctx) {
       if (ctx.dev && ctx.isClient) {
         config.module.rules.push({

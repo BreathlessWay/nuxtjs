@@ -53,3 +53,11 @@ For detailed explanation on how things work, checkout the [Nuxt.js docs](https:/
             }
       }
   >
+ 9. 识别IE,跳转
+  >
+    <!--[if lt IE 10]>
+    <head>
+      <meta http-equiv="Refresh" content="10; url=http://www.baidu.com/"/>
+    </head>
+    <![endif]-->
+  >

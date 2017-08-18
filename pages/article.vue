@@ -112,9 +112,6 @@
             transition: all 0.4s ease;
             color: #75818d;
             font-size: 12px;
-            img {
-              max-width: 100%;
-            }
             h4 {
               margin-top: 15px;
               font-size: 18px;
@@ -174,6 +171,9 @@
             li.media {
               .media-left, .media-body {
                 width: 50%;
+              }
+              img {
+                width: 100%;
               }
               h4 {
                 margin-top: 0;

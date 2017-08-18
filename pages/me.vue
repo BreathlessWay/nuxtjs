@@ -16,6 +16,9 @@
 
   export default {
     name: 'me',
+    head: {
+      title: '关于大胖'
+    },
     computed: {
       ...mapGetters(['baseConfig'])
     }

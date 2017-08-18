@@ -17,6 +17,7 @@
             </div>
           </li>
         </ul>
+        <pagination :current="articleBase.request.page" :showItem="5" :allpage="articleBase.response.total"></pagination>
       </article>
       <div class="article-index_nav hidden-xs text-center">
         <ul class="article-index_nav_list">
@@ -72,6 +73,9 @@
     mounted () {
       this.getList()
     },
+    components: {
+      'pagination': require('../components/pagination.vue').default
+    },
     methods: {
       getList (params) {
         this.$store.dispatch(mutationTypes.GET_ARTICLE_LIST, {...this.articleBase.request, ...params})
@@ -108,6 +112,7 @@
         }
         .article-index-content_list {
           li.media {
+            cursor: pointer;
             margin-bottom: 40px;
             transition: all 0.4s ease;
             color: #75818d;

@@ -13,7 +13,7 @@
             <div class="media-body">
               <h4 class="media-heading">{{list.title}}</h4>
               <p>{{list.desc}}</p>
-              <p>{{new Date(list.published_at).Format('yyyy.MM.dd')}}</p>
+              <p>{{new Date(list.published_at*1000).Format('yyyy.MM.dd')}}</p>
             </div>
           </li>
         </ul>

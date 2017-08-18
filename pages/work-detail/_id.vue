@@ -12,7 +12,7 @@
           <span class="glyphicon glyphicon-eye-open"></span>
           <span>{{detail.data.view_count}}</span>
           <span class="glyphicon glyphicon-time"></span>
-          <span>{{new Date(detail.data.published_at).Format('yyyy.mm.dd')}}</span>
+          <span>{{new Date(detail.data.published_at).Format('yyyy.MM.dd')}}</span>
         </p>
       </header>
       <section class="text-center">

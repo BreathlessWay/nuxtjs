@@ -2,9 +2,21 @@
   <article class="article-index">
     <section class="article-index_container">
       <article class="article-index_list">
-        <section class="article-index_no_article text-center">
+        <section class="article-index_no_article text-center" v-show="articleBase.response.list.length === 0 ">
           <img src="../static/no-article.png" alt="暂无文章">
         </section>
+        <ul class="article-index-content_list">
+          <li v-for="(list,index) in articleBase.response.list" class="media">
+            <div class="media-left">
+              <img class="media-object" :src="list.cover_link" :alt="list.slug">
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">{{list.title}}</h4>
+              <p>{{list.desc}}</p>
+              <p>{{new Date(list.published_at).Format('yyyy.MM.dd')}}</p>
+            </div>
+          </li>
+        </ul>
       </article>
       <div class="article-index_nav hidden-xs text-center">
         <ul class="article-index_nav_list">
@@ -54,7 +66,7 @@
     },
     computed: {
       articleBase () {
-        return this.$store.state.article.articleBase
+        return this.$store.state.article[this.title[this.activeIndex].name] ? this.$store.state.article[this.title[this.activeIndex].name] : this.$store.state.article.articleBase
       }
     },
     mounted () {
@@ -94,6 +106,38 @@
             padding: 200px 0;
           }
         }
+        .article-index-content_list {
+          li.media {
+            margin-bottom: 40px;
+            transition: all 0.4s ease;
+            color: #75818d;
+            font-size: 12px;
+            img {
+              max-width: 100%;
+            }
+            h4 {
+              margin-top: 15px;
+              font-size: 18px;
+              color: @color-active;
+            }
+            p:first-of-type {
+              margin: 20px 0;
+              font-size: 13px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              display: -webkit-box;
+              -webkit-line-clamp: 3;
+              -webkit-box-orient: vertical;
+            }
+            &:last-of-type {
+              margin-bottom: 0;
+            }
+            &:hover {
+              box-shadow: 0 22px 43px 1px rgba(68, 68, 68, .2);
+              transform: translateX(-15px);
+            }
+          }
+        }
       }
       .article-index_nav {
         width: 192px;
@@ -126,10 +170,29 @@
       .article-index_container {
         .article-index_list {
           padding: 20px;
-          .article-index_no_article {
-            img {
-              max-width: 100%;
-              padding: 50px 0;
+          .article-index-content_list {
+            li.media {
+              .media-left, .media-body {
+                width: 50%;
+              }
+              h4 {
+                margin-top: 0;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+              }
+              p:first-of-type {
+                margin: 16px 0;
+                -webkit-line-clamp: 1;
+              }
+            }
+            .article-index_no_article {
+              img {
+                max-width: 100%;
+                padding: 50px 0;
+              }
             }
           }
         }

@@ -14,13 +14,12 @@ const state = {
       list: [],
       total: 0
     }
-  },
-  baseSetting: {}
+  }
 }
 
 const mutations = {
   [mutationTypes.UPDATE_ARTICLE_LIST] (state, data) {
-    Vue.set(state, data.request.tags, {
+    Vue.set(state, data.request.tags ? data.request.tags : '全部文章', {
       ...state.articleBase,
       ...data
     })

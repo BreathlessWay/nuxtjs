@@ -1,30 +1,34 @@
 <template>
   <section class="share-btn">
     <span>分享到：</span>
-    <a :href="list.link" v-for="(list,index) in shareBase.response.list" :key="index">
-      <img :src="list.logo" alt="" width="24" height="24">
-    </a>
+    <!-- JiaThis Button BEGIN -->
+    <div class="jiathis_style_32x32">
+      <a class="jiathis_button_qzone"></a>
+      <a class="jiathis_button_tsina"></a>
+      <a class="jiathis_button_weixin"></a>
+      <a class="jiathis_button_huaban"></a>
+      <a class="jiathis_button_douban"></a>
+      <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank" style="visibility: hidden"></a>
+    </div>
+    <!-- JiaThis Button END -->
   </section>
 </template>
 <script>
   export default {
     name: 'share-btn',
-    computed: {
-      shareBase () {
-        return this.$store.state.workDetail.shareIcon
-      }
-    }
+    mounted () {}
   }
 </script>
 <style scoped lang="less">
   @import "../assets/var.less";
 
   .share-btn {
-    img {
-      margin-right: 10px;
-    }
     span {
-      margin-right: 5px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .jiathis_style_32x32{
+      display: inline-block;
       vertical-align: middle;
     }
   }

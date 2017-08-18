@@ -43,12 +43,22 @@
 <script>
   export default {
     name: 'pagination',
-    data () {
-      return {
-        current: 1,
-        showItem: 5,
-        allpage: 13
+    props: {
+      current: {
+        type: Number,
+        default: 1
+      },
+      showItem: {
+        type: Number,
+        default: 5
+      },
+      allpage: {
+        type: Number,
+        default: 0
       }
+    },
+    data () {
+      return {}
     },
     computed: {
       pages () {

@@ -41,14 +41,10 @@
       ]
     },
     asyncData ({error}) {
-      return axios.get('tags')
+      return axios.get('tags', {params: {type: 'works'}})
         .then(res => {
-          const title = []
-          res.data.data.forEach(list => {
-            list.type === 'works' && title.push(list)
-          })
           return {
-            title: title.reverse()
+            title: res.data.data.reverse()
           }
         })
         .catch(err => {
@@ -151,9 +147,7 @@
         }
       }
       .blog-index_img {
-        margin: 0;
-        padding: 0 0 @MP30PX 0;
-        list-style: none;
+        padding-bottom: @MP30PX;
         li {
           padding-top: @MP30PX;
           text-align: center;

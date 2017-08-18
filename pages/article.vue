@@ -17,7 +17,6 @@
             </div>
           </li>
         </ul>
-        <pagination :current="articleBase.request.page" :showItem="5" :allpage="articleBase.response.total"></pagination>
       </article>
       <div class="article-index_nav hidden-xs text-center">
         <ul class="article-index_nav_list">

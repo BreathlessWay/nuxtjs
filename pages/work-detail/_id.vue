@@ -31,7 +31,6 @@
 </template>
 <script>
   import axios from 'axios'
-  import * as mutationTypes from '../../store/work-detail/mutations'
 
   export default {
     name: 'work-detail',
@@ -62,10 +61,6 @@
       shareBase () {
         return this.$store.state.workDetail.shareIcon
       }
-    },
-    created () {
-      console.log(this.head)
-      this.$store.dispatch(mutationTypes.GET_SHARE_ICON, {...this.shareBase.request})
     },
     methods: {
       handleInput (val) {

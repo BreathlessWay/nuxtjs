@@ -6,9 +6,9 @@ const state = {
   articleBase: {
     request: {
       page: 1,
-      count: 9,
+      count: 10,
       tags: '',
-      type: 'works'
+      type: 'articles'
     },
     response: {
       list: [],
@@ -19,24 +19,16 @@ const state = {
 }
 
 const mutations = {
-  [mutationTypes.UPDATE_WORK_LIST] (state, data) {
+  [mutationTypes.UPDATE_ARTICLE_LIST] (state, data) {
     Vue.set(state, data.request.tags, {
       ...state.articleBase,
       ...data
     })
-  },
-  [mutationTypes.UPDATE_BASE_SETTING] (state, data) {
-    state.baseSetting = data
   }
 }
 
 export default {
   state,
   mutations,
-  actions,
-  getters: {
-    baseConfig: state => {
-      return state.baseSetting
-    }
-  }
+  actions
 }

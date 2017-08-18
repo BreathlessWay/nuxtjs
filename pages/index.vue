@@ -35,9 +35,9 @@
 
   export default {
     head: {
-      title: '大胖的博客',
+      title: '大胖的作品',
       meta: [
-        {hid: 'description', name: 'description', content: 'smalltiger blog'}
+        {hid: 'description', name: 'description', content: 'smalltiger work'}
       ]
     },
     asyncData ({error}) {
@@ -69,11 +69,9 @@
     },
     methods: {
       getArticleList (params) {
-        this.$store.dispatch(mutationTypes.GET_ARTICLE_LIST, {...this.articleBase.request, ...params})
+        this.$store.dispatch(mutationTypes.GET_WORK_LIST, {...this.articleBase.request, ...params})
           .catch(err => {
             alert(err)
-          })
-          .finally(() => {
           })
       },
       handleTabsClick (index, name) {

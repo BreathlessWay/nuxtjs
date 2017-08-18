@@ -1,7 +1,7 @@
 import axios from 'axios'
-import { UPDATE_ARTICLE_LIST, UPDATE_BASE_SETTING } from './mutations'
+import { UPDATE_WORK_LIST, UPDATE_BASE_SETTING } from './mutations'
 
-export function GET_ARTICLE_LIST ({state, rootState, commit, dispatch, getters}, params = {}) {
+export function GET_WORK_LIST ({state, rootState, commit, dispatch, getters}, params = {}) {
   return axios.get('articles', {params})
     .then(res => {
       let hasMore = true
@@ -12,7 +12,7 @@ export function GET_ARTICLE_LIST ({state, rootState, commit, dispatch, getters},
       } else {
         hasMore = true
       }
-      commit(UPDATE_ARTICLE_LIST, {
+      commit(UPDATE_WORK_LIST, {
         request: {
           ...params
         },

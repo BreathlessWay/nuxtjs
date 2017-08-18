@@ -1,17 +1,15 @@
 <template>
   <article class="article-index">
-    <section class="row">
-      <div class="col-sm-12">
-        <article class="article-index_list">
-          <section class="article-index_no_article text-center">
-            <img src="../static/no-article.png" alt="暂无文章">
-          </section>
-        </article>
-      </div>
+    <section class="article-index_container">
+      <article class="article-index_list">
+        <section class="article-index_no_article text-center">
+          <img src="../static/no-article.png" alt="暂无文章">
+        </section>
+      </article>
       <div class="article-index_nav hidden-xs text-center">
-        <ul>
-          <li v-for="(list,index) in title" :key="index" @click="getArticleList(list.name)">
-            {{list.name}}
+        <ul class="article-index_nav_list">
+          <li v-for="(list,index) in title" :key="index" @click="getArticleList(list.name,index)" :class="{'article-title_active':index === activeIndex}">
+            {{list.name + '(' + list.order_column + ')'}}
           </li>
         </ul>
       </div>
@@ -20,13 +18,27 @@
 </template>
 <script>
   import axios from 'axios'
+  import * as mutationTypes from '../store/article/mutations'
 
   export default {
     name: 'article-index',
+    head: {
+      title: '大胖的文章',
+      meta: [
+        {hid: 'description', name: 'description', content: 'smalltiger blog'}
+      ]
+    },
     asyncData ({error}) {
       return axios.get('tags', {params: {type: 'articles'}})
         .then(res => {
-          res.data.data.push({name: '全部文章'})
+          const all = {
+            name: '全部文章',
+            'order_column': 0
+          }
+          res.data.data.forEach(list => {
+            all['order_column'] += list['order_column']
+          })
+          res.data.data.push(all)
           return {
             title: res.data.data.reverse()
           }
@@ -35,12 +47,29 @@
           error({statusCode: err.status || 404, message: err.message || 'Page not found'})
         })
     },
-    created () {
+    data () {
+      return {
+        activeIndex: 0
+      }
+    },
+    computed: {
+      articleBase () {
+        return this.$store.state.article.articleBase
+      }
     },
     mounted () {
+      this.getList()
     },
     methods: {
-      getArticleList (name) {}
+      getList (params) {
+        this.$store.dispatch(mutationTypes.GET_ARTICLE_LIST, {...this.articleBase.request, ...params})
+          .catch(err => {
+            alert(err)
+          })
+      },
+      getArticleList (name, index) {
+        this.activeIndex = index
+      }
     }
   }
 </script>
@@ -51,32 +80,56 @@
   .article-index {
     max-width: @max-width;
     margin: 22px auto 0;
-    .article-index_nav {
-      float: right;
-      width: 160px;
-      background: @background-color-default;
-      margin: auto;
-    }
-    .article-index_list {
-      background: @background-color-default;
-      margin: auto;
-      padding: 40px;
-      .article-index_no_article{
-        img{
-          max-width: 100%;
-          padding: 200px 0;
+    .article-index_container {
+      display: flex;
+      justify-content: space-around;
+      .article-index_list {
+        background: @background-color-default;
+        padding: 40px;
+        width: 100%;
+        .article-index_no_article {
+          img {
+            max-width: 100%;
+            padding: 200px 0;
+          }
+        }
+      }
+      .article-index_nav {
+        width: 192px;
+        margin-left: 20px;
+        .article-index_nav_list {
+          background: @background-color-default;
+          padding: 30px 0;
+          li {
+            font-size: 13px;
+            color: @color-default;
+            margin-bottom: 30px;
+            cursor: pointer;
+            &:last-of-type {
+              margin-bottom: 0;
+            }
+          }
+          .article-title_active {
+            font-size: 15px;
+            color: @color-active;
+            border-left: 5px solid @color-active;
+          }
         }
       }
     }
+
   }
-  @media (max-width: @client-max-width){
+
+  @media (max-width: @client-max-width) {
     .article-index {
-      .article-index_list {
-        padding: 20px;
-        .article-index_no_article{
-          img{
-            max-width: 100%;
-            padding: 50px 0;
+      .article-index_container {
+        .article-index_list {
+          padding: 20px;
+          .article-index_no_article {
+            img {
+              max-width: 100%;
+              padding: 50px 0;
+            }
           }
         }
       }

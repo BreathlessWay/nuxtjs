@@ -13,7 +13,7 @@
             <div class="media-body">
               <h4 class="media-heading">{{list.title}}</h4>
               <p>{{list.desc}}</p>
-              <p>{{new Date(list.published_at*1000).Format('yyyy.MM.dd')}}</p>
+              <p>{{new Date(list.published_at * 1000).Format('yyyy.MM.dd')}}</p>
             </div>
           </li>
         </ul>
@@ -62,6 +62,7 @@
     },
     data () {
       return {
+        showModal: false,
         activeIndex: 0
       }
     },
@@ -86,6 +87,12 @@
       getArticleList (name, index) {
         this.activeIndex = index
         name === '全部文章' ? this.getList({tags: ''}) : this.getList({tags: name})
+      },
+      cancel (value) {
+        this.showModal = value
+      },
+      ok (value) {
+        console.log(value)
       }
     }
   }
@@ -135,7 +142,6 @@
               margin-bottom: 0;
             }
             &:hover {
-              box-shadow: 0 22px 43px 1px rgba(68, 68, 68, .2);
               transform: translateX(-15px);
             }
           }

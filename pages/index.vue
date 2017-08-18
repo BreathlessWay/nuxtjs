@@ -161,6 +161,12 @@
         }
       }
       .blog-index_more {
+        .btn-default{
+          border-radius: 40px;
+          width: 250px;
+          height: 40px;
+          margin-bottom: @MP30PX;
+        }
         .btn:hover {
           &:after {
             content: '>';

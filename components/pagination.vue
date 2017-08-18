@@ -13,7 +13,6 @@
 <style lang="less" scoped>
   .pagination {
     position: relative;
-
   }
 
   .pagination li {
@@ -26,7 +25,6 @@
     display: inline-block;
     border: 1px solid #ddd;
     background: #fff;
-
     color: #0E90D2;
   }
 

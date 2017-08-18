@@ -69,6 +69,7 @@
       },
       getArticleList (name, index) {
         this.activeIndex = index
+        name === '全部文章' ? this.getList({tags: ''}) : this.getList({tags: name})
       }
     }
   }

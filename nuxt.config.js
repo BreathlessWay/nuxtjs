@@ -1,3 +1,4 @@
+const webpack = require('webpack')
 module.exports = {
   /*
   ** Headers of the page
@@ -79,6 +80,11 @@ module.exports = {
           loader: 'eslint-loader',
           exclude: /(node_modules)/
         })
+      }
+      config.externals = {
+        $: 'jquery',
+        jQuery: 'jquery',
+        'window.$': 'jquery'
       }
     }
   }

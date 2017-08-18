@@ -2,7 +2,7 @@
 
 > Nuxt.js project
 
-[Project Url](ssr.smalltiger.me)
+[PROJECT URL](ssr.smalltiger.me)
 ## Build Setup
 
 ``` bash
@@ -23,7 +23,19 @@ $ npm run generate
 For detailed explanation on how things work, checkout the [Nuxt.js docs](https://github.com/nuxt/nuxt.js).
 
 ## Problem
-1. 不能通过cdn引入插件，提供全局变量
+1. 通过cdn引入插件
+    >
+          build:{
+            extend (config, ctx) {
+              config.externals = {
+                $: 'jquery',
+                jQuery: 'jquery',
+                'window.$': 'jquery'
+              }
+            }
+          }
+          通过window.$来提供全局变量，在页面中通过window.$来调用
+    >
 2. 如果需要使用less sass scss需要安装对应的loader
 3. axios配置
 4. require('../components/component.vue').default引入组件

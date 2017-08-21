@@ -3,7 +3,7 @@ import * as mutationTypes from './mutations'
 import Vue from 'vue'
 
 const state = {
-  articleBase: {
+  workBase: {
     request: {
       page: 1,
       count: 9,
@@ -21,7 +21,7 @@ const state = {
 const mutations = {
   [mutationTypes.UPDATE_WORK_LIST] (state, data) {
     Vue.set(state, data.request.tags, {
-      ...state.articleBase,
+      ...state.workBase,
       ...data
     })
   },

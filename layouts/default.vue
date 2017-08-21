@@ -197,7 +197,7 @@
   }
 </style>
 <script>
-  import * as mutationTypes from '../store/home/mutations'
+  import * as mutationTypes from '../store/work/mutations'
   import { mapGetters } from 'vuex'
 
   export default {

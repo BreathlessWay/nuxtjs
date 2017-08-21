@@ -1,4 +1,3 @@
-const webpack = require('webpack')
 module.exports = {
   /*
   ** Headers of the page
@@ -7,9 +6,11 @@ module.exports = {
     title: 'nuxtjs',
     meta: [
       {charset: 'utf-8'},
-      {name: 'viewport', content: 'width=device-width, initial-scale=1, shrink-to-fit=no'},
+      {name: 'viewport', content: 'width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no, shrink-to-fit=no'},
       {name: 'renderer', content: 'webkit'},
       {'http-equiv': 'X-UA-Compatible', content: 'IE=edge'},
+      {'http-equiv': 'Cache-Control', content: 'no-siteapp'},
+      {name: 'format-detection', content: 'telephone=no'},
       {name: 'author', content: 'BreathlessWay  731005087@qq.com'},
       {name: 'apple-mobile-web-app-title', content: 'smalltiger blog'},
       {name: 'apple-mobile-web-app-capable', content: 'yes'},
@@ -24,7 +25,8 @@ module.exports = {
       {hid: 'description', name: 'description', content: 'Nuxt.js project'}
     ],
     link: [
-      {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'},
+      {rel: 'shortcut icon', type: 'image/x-icon', href: '/favicon.ico'},
+      {rel: 'apple-touch-icon-precomposed', href: '/favicon.ico'},
       {rel: 'stylesheet', href: 'https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css'}
     ],
     script: [

@@ -6,6 +6,9 @@
 
 <script>
   export default {
+    head: {
+      title: '404 NOT FOUND'
+    },
     props: ['error'],
     layout: 'default' // 你可以为错误页面指定自定义的布局
   }

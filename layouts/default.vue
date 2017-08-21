@@ -86,6 +86,7 @@
         </section>
       </article>
     </footer>
+    <message></message>
   </article>
 </template>
 
@@ -197,7 +198,7 @@
   }
 </style>
 <script>
-  import * as mutationTypes from '../store/home/mutations'
+  import * as mutationTypes from '../store/work/mutations'
   import { mapGetters } from 'vuex'
 
   export default {
@@ -206,6 +207,9 @@
     },
     computed: {
       ...mapGetters(['baseConfig'])
+    },
+    components: {
+      'message': require('../components/message.vue').default
     },
     created () {
       this.$store.dispatch(mutationTypes.GET_BASE_SETTING)

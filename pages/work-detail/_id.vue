@@ -57,11 +57,6 @@
       'good-btn': require('../../components/good-btn.vue').default,
       'share-btn': require('../../components/share-btn.vue').default
     },
-    computed: {
-      shareBase () {
-        return this.$store.state.workDetail.shareIcon
-      }
-    },
     methods: {
       handleInput (val) {
         axios.post(`articles/${this.$route.params.id}/vote`)

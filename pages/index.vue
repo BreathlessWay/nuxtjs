@@ -8,19 +8,19 @@
             <a href="#" @click.prevent="handleTabsClick(index,list.name)">{{list.name}}</a>
           </li>
         </ul>
-        <ul class="blog-index_img" v-show="articleBase.response.list.length>0">
-          <li v-for="(list,index) in articleBase.response.list" :key="index" class="col-sm-4">
+        <ul class="blog-index_img" v-show="workBase.response.list.length>0">
+          <li v-for="(list,index) in workBase.response.list" :key="index" class="col-sm-4">
             <img :src=list.cover_link :alt=list.title class="blog-index_workList" @click="getWorkDetail(list.id)">
           </li>
           <li class="clearfix"></li>
         </ul>
-        <div class="text-center" v-show="articleBase.response.list.length === 0">
+        <div class="text-center" v-show="workBase.response.list.length === 0">
           <div class="white-space"></div>
           <img src="../static/index-no-data.png" alt="暂无作品" width="298" height="241">
           <div class="white-space"></div>
         </div>
         <aside class="blog-index_more text-center">
-          <button type="button" class="btn btn-default" v-show="articleBase.response.hasMore" @click="getMoreArticle">
+          <button type="button" class="btn btn-default" v-show="workBase.response.hasMore" @click="getMoreArticle">
             <span>查看更多</span>
           </button>
         </aside>
@@ -31,7 +31,7 @@
 
 <script>
   import axios from 'axios'
-  import * as mutationTypes from '../store/home/mutations'
+  import * as mutationTypes from '../store/work/mutations'
 
   export default {
     head: {
@@ -57,19 +57,16 @@
       }
     },
     computed: {
-      articleBase () {
-        return this.$store.state.home[this.title[this.activeIndex].name] ? this.$store.state.home[this.title[this.activeIndex].name] : this.$store.state.home.articleBase
+      workBase () {
+        return this.$store.state.work[this.title[this.activeIndex].name] ? this.$store.state.work[this.title[this.activeIndex].name] : this.$store.state.work.workBase
       }
-    },
-    components: {
-      //      'loading': require('~/components/loading.vue').default
     },
     mounted () {
       this.getArticleList({tags: this.title[0].name})
     },
     methods: {
       getArticleList (params) {
-        this.$store.dispatch(mutationTypes.GET_WORK_LIST, {...this.articleBase.request, ...params})
+        this.$store.dispatch(mutationTypes.GET_WORK_LIST, {...this.workBase.request, ...params})
           .catch(err => {
             alert(err)
           })
@@ -79,7 +76,7 @@
         this.getArticleList({tags: name})
       },
       getMoreArticle () {
-        const params = {...this.articleBase.request}
+        const params = {...this.workBase.request}
         const page = params.page + 1
         params.count = page * params.count
         this.getArticleList(params)

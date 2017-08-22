@@ -62,3 +62,4 @@ For detailed explanation on how things work, checkout the [Nuxt.js docs](https:/
     <![endif]-->
   >
  10. 时间戳转换 new Date(time*1000)
+ 11. 通过Vue.component(component.name,component)实现面声明引入，直接使用的组件

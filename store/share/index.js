@@ -5,7 +5,7 @@ const state = {
   shareIcon: {
     request: {
       page: 1,
-      count: 4
+      count: 28
     },
     response: {
       list: [],

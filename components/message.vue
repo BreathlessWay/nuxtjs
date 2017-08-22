@@ -66,6 +66,7 @@
       display: inline-block;
       text-align: center;
       width: 100%;
+      padding: 0 10px;
       line-height: 40px;
       color: @color-default;
     }

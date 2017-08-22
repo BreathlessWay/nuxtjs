@@ -1,91 +1,50 @@
 <template>
-  <article>
+  <nav aria-label="Page navigation">
     <ul class="pagination">
-      <li v-show="current != 1" @click="current-- && goto(current)"><a href="#">上一页</a></li>
-      <li v-for="index in pages" @click="goto(index)" :class="{'active':current == index}" :key="index">
-        <a href="#">{{index}}</a>
+      <li :class="{'active':pageIndex===list}" v-for="(list,index) in pageArray">
+        <a href="#">{{list}}</a>
       </li>
-      <li v-show="allpage != current && allpage != 0 " @click="current++ && goto(current++)"><a href="#">下一页</a></li>
     </ul>
-  </article>
+  </nav>
 </template>
-
-<style lang="less" scoped>
-  .pagination {
-    position: relative;
-  }
-
-  .pagination li {
-    display: inline-block;
-    margin: 0 5px;
-  }
-
-  .pagination li a {
-    padding: .5rem 1rem;
-    display: inline-block;
-    border: 1px solid #ddd;
-    background: #fff;
-    color: #0E90D2;
-  }
-
-  .pagination li a:hover {
-    background: #eee;
-  }
-
-  .pagination li.active a {
-    background: #0E90D2;
-    color: #fff;
-  }
-</style>
-
 <script>
   export default {
     name: 'pagination',
     props: {
-      current: {
-        type: Number,
+      pageIndex: {
+        type: [String, Number],
         default: 1
       },
-      showItem: {
-        type: Number,
-        default: 5
+      pageSize: {
+        type: [String, Number],
+        default: 10
       },
-      allpage: {
-        type: Number,
+      total: {
+        type: [String, Number],
         default: 0
+      },
+      showItem: {
+        type: [String, Number],
+        default: 5
       }
-    },
-    data () {
-      return {}
     },
     computed: {
-      pages () {
-        const pag = []
-        if (this.current < this.showItem) { // 如果当前的激活的项 小于要显示的条数
-          // 总页数和要显示的条数那个大就显示多少条
-          let i = Math.min(this.showItem, this.allpage)
-          while (i) {
-            pag.unshift(i--)
+      pageArray () {
+        if (this.total < this.count) {
+          return [1]
+        } else {
+          const array = []
+          const pageCount = Math.ceil(this.total / this.pageSize)
+          let len = pageCount < this.showItem ? pageCount : this.showItem
+          for (let i = 1; i <= len; i++) {
+            array.push(i)
           }
-        } else { // 当前页数大于显示页数了
-          let middle = this.current - Math.floor(this.showItem / 2)// 从哪里开始
-          let i = this.showItem
-          if (middle > (this.allpage - this.showItem)) {
-            middle = (this.allpage - this.showItem) + 1
-          }
-          while (i--) {
-            pag.push(middle++)
-          }
+          return array
         }
-        return pag
-      }
-    },
-    methods: {
-      goto (index) {
-        if (index === this.current) return
-        this.current = index
-        // 这里可以发送ajax请求
       }
     }
   }
 </script>
+<style lang="less">
+  @import "../assets/var";
+</style>

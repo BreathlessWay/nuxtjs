@@ -17,6 +17,7 @@
             </div>
           </li>
         </ul>
+        <pagination v-show="articleBase.response.list.length>0" :pageIndex="articleBase.request.page" :pageSize="articleBase.request.count" :total="articleBase.response.total"></pagination>
       </article>
       <div class="article-index_nav hidden-xs text-center">
         <ul class="article-index_nav_list">
@@ -62,7 +63,6 @@
     },
     data () {
       return {
-        showModal: false,
         activeIndex: 0,
         show: false,
         type: '',
@@ -93,12 +93,6 @@
       getArticleList (name, index) {
         this.activeIndex = index
         name === '全部文章' ? this.getList({tags: ''}) : this.getList({tags: name})
-      },
-      cancel (value) {
-        this.showModal = value
-      },
-      ok (value) {
-        console.log(value)
       },
       getArticleDetail (id) {
         this.$router.push({name: 'article-detail-id', params: {id}})
@@ -170,7 +164,7 @@
             &:last-of-type {
               margin-bottom: 0;
             }
-            &:hover{
+            &:hover {
               color: @color-active;
             }
           }

@@ -9,15 +9,17 @@
         </ul>
         <ul class="share-index_img" v-show="shareBase.response.list.length>0">
           <li v-for="(list,index) in shareBase.response.list" :key="index" class="col-sm-4 col-md-3">
-            <section>
-              <div>
-                <img :src=list.logo :alt=list.name class="share-index_workList" @click="getWorkDetail(list.id)">
-                <span>
+            <a :href="list.link">
+              <section>
+                <div>
+                  <img :src=list.logo :alt=list.name class="share-index_workList" @click="getWorkDetail(list.id)">
+                  <span>
                 {{list.name}}
               </span>
-              </div>
-              <p>{{list.desc}}</p>
-            </section>
+                </div>
+                <p>{{list.desc}}</p>
+              </section>
+            </a>
           </li>
           <li class="clearfix"></li>
         </ul>

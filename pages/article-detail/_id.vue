@@ -54,7 +54,9 @@
         </div>
       </div>
     </section>
-    <modal v-model="showModal"></modal>
+    <modal :show.sync="showModal" :needBtn="false" title="分享到">
+      <share-btn></share-btn>
+    </modal>
   </article>
 </template>
 <script>

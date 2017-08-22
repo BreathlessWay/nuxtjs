@@ -43,6 +43,10 @@
         ]
       }
     },
+    validate ({params}) {
+      // Must be a exist
+      return params.id
+    },
     asyncData ({params, error}) {
       return axios.get(`articles/${params.id}`)
         .then(res => {
@@ -91,9 +95,9 @@
   .work-detail {
     max-width: @max-width;
     margin: auto;
-    @media (max-width: 760px) {
+    @media (max-width: @client-max-width) {
       & {
-        margin-top: 15px;
+        margin-top: 20px;
       }
     }
     .work-detail_content {

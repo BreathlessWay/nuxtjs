@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import QRCode from './qrcode'
 
 const MyPlugin = {}
 MyPlugin.install = function (Vue, options) {
@@ -48,6 +49,12 @@ MyPlugin.install = function (Vue, options) {
         }
       }
     }
+  }
+  Vue.prototype.$qRCode = function (id, options) {
+    new QRCode(document.getElementById(id), {
+      correctLevel: QRCode.CorrectLevel.H,
+      ...options
+    })
   }
 }
 if (process.browser) {

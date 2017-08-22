@@ -132,6 +132,9 @@
         display: inline-block;
         float: none;
         padding: 45px 15px;
+        &:hover a{
+          color: @color-active;
+        }
       }
       .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
         color: @color-active;

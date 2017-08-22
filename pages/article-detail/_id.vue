@@ -1,33 +1,36 @@
 <template>
-  <article class="work-detail">
-    <article class="work-detail_content">
-      <header class="row">
-        <h3 class="work-detail_title col-sm-9 col-xs-12">{{detail.data.title}}</h3>
-        <aside class="col-sm-3 work-detail_swiper hidden-xs">
-          <span class="glyphicon glyphicon-menu-left" v-show="detail.data.prev_slug" @click="$router.push({name:'work-detail-id',params:{id:detail.data.prev_slug}})"></span>
-          <span>|</span>
-          <span class="glyphicon glyphicon-menu-right" v-show="detail.data.next_slug" @click="$router.push({name:'work-detail-id',params:{id:detail.data.next_slug}})"></span>
-        </aside>
-        <p class="col-xs-12 work-detail_count">
-          <span class="glyphicon glyphicon-eye-open"></span>
-          <span>{{detail.data.view_count}}</span>
-          <span class="glyphicon glyphicon-time"></span>
-          <span>{{new Date(detail.data.published_at * 1000).Format('yyyy.MM.dd')}}</span>
-        </p>
-      </header>
-      <section class="text-center">
-        <img :src="detail.data.cover_link" :alt="detail.data.desc" style="max-width: 100%">
-      </section>
-    </article>
-    <section class="work-detail-btn row">
-      <div class="col-sm-6 work-detail-btn_good col-xs-12">
-        <good-btn :goodCount.sync="detail.data.vote_count" @input="handleInput"></good-btn>
-      </div>
-      <div class="col-sm-6 work-detail-btn_share col-xs-12">
-        <share-btn></share-btn>
+  <article class="article-detail">
+    <section class="article-detail_container">
+      <article class="article-detail_content">
+        <div class="visible-xs-block work-detail-btn_share text-center">
+          <share-btn></share-btn>
+        </div>
+      </article>
+      <div class="article-detail_nav hidden-xs text-center">
+        <ul class="article-detail_nav_list">
+          <li>
+            <a href="#">
+              分享给朋友
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              上一篇文章
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              下一篇文章
+            </a>
+          </li>
+        </ul>
+        <div class="article-detail_code">
+          <div id="qrcode"></div>
+          <p>
+            轻扫随时阅读 </p>
+        </div>
       </div>
     </section>
-    <message v-model="show" :type="type" :message="message"></message>
   </article>
 </template>
 <script>
@@ -43,6 +46,10 @@
         ]
       }
     },
+    validate ({params}) {
+      // Must be a exist
+      return params.id
+    },
     asyncData ({params, error}) {
       return axios.get(`articles/${params.id}`)
         .then(res => {
@@ -55,113 +62,73 @@
         })
     },
     data () {
-      return {
-        show: false,
-        type: '',
-        message: ''
-      }
+      return {}
+    },
+    mounted () {
+      this.$qRCode(
+        'qrcode', {
+          text: window.location.href,
+          width: 128,
+          height: 128,
+          colorDark: '#000000',
+          colorLight: '#ffffff'
+        }
+      )
     },
     components: {
-      'good-btn': require('../../components/good-btn.vue').default,
-      'share-btn': require('../../components/share-btn.vue').default,
-      'message': require('../../components/message.vue').default
+      'share-btn': require('../../components/share-btn.vue').default
     },
-    methods: {
-      handleInput (val) {
-        axios.post(`articles/${this.$route.params.id}/vote`)
-          .then(res => {
-            console.log(res)
-            const info = res > this.detail.data.vote_count ? '点赞成功' : '取消点赞'
-            const type = res > this.detail.data.vote_count ? 'success' : 'info'
-            this.detail.data.vote_count = val
-            console.log(info, type)
-          })
-          .catch(err => {
-            this.show = true
-            this.type = 'error'
-            this.message = err
-          })
-      }
-    }
+    methods: {}
   }
 </script>
 <style lang="less">
   @import "../../assets/var";
 
-  .work-detail {
+  #qrcode {
+    width: 125px;
+    height: 125px;
+  }
+
+  .article-detail {
     max-width: @max-width;
-    margin: auto;
-    @media (max-width: 760px) {
+    margin: 40px auto 20px;
+    @media (max-width: @client-max-width) {
       & {
-        margin-top: 15px;
+        margin-top: 20px;
       }
     }
-    .work-detail_content {
-      padding: 40px;
-      background: @background-color-default;
-    }
-    .work-detail_title {
-      color: @color-active;
-      font-size: 24px;
-      font-weight: 600;
-      margin: 0;
-      padding: 0;
-    }
-    .work-detail_swiper {
-      text-align: right;
-      span {
-        color: @page-change-default;
-        margin: 0 10px;
-        vertical-align: middle;
+    .article-detail_container {
+      display: flex;
+      justify-content: space-around;
+      .article-detail_content {
+        width: 100%;
       }
-      .glyphicon {
-        transition: all 0.4s ease;
-        cursor: pointer;
-        &:hover {
-          transform: scale(1.2);
-          color: @page-change-active;
+      .article-detail_nav {
+        a {
+          color: @color-active;
+          &:hover {
+            text-decoration: none;
+            color: @color-default;
+          }
         }
-      }
-    }
-    .work-detail_count {
-      margin: 20px 0 40px;
-      padding: 0 0 30px;
-      border-bottom: @detail-border-bottom;
-      span {
-        color: @color-default;
-        vertical-align: top;
-        font-size: 13px;
-        &:nth-of-type(1), &:nth-of-type(3) {
-          margin-right: 8px;
+        .article-detail_nav_list {
+          background: @background-color-default;
+          padding: 0 30px;
+          li {
+            padding: 20px 0;
+            &:nth-of-type(2) {
+              border-top: @border-top-bottom;
+              border-bottom: @border-top-bottom;
+            }
+          }
         }
-        &:nth-of-type(2) {
-          margin-right: 44px;
-        }
-      }
-    }
-    .work-detail-btn {
-      margin: 15px 0;
-      background: @background-color-default;
-      padding: 35px;
-      font-size: 12px;
-      color: @color-default;
-      .work-detail-btn_good.col-xs-12 {
-      }
-      .work-detail-btn_share.col-xs-12 {
-        text-align: right;
-      }
-      @media (max-width: @client-max-width) {
-        & {
-          padding: 20px 0;
-        }
-
-        .work-detail-btn_good.col-xs-12 {
-          text-align: center;
-          margin-bottom: 20px;
-        }
-
-        .work-detail-btn_share.col-xs-12 {
-          text-align: center;
+        .article-detail_code {
+          margin-top: 15px;
+          background: @background-color-default;
+          padding: 20px 20px 0;
+          p {
+            padding: 15px 0;
+          }
         }
       }
     }

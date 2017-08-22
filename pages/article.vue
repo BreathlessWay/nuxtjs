@@ -112,7 +112,7 @@
 
   .article-index {
     max-width: @max-width;
-    margin: 22px auto 0;
+    margin: 20px auto 0;
     .article-index_container {
       display: flex;
       justify-content: space-around;
@@ -169,6 +169,9 @@
             cursor: pointer;
             &:last-of-type {
               margin-bottom: 0;
+            }
+            &:hover{
+              color: @color-active;
             }
           }
           .article-title_active {

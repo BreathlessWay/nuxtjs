@@ -29,7 +29,7 @@
 
   .me-index {
     max-width: @max-width;
-    margin: auto;
+    margin: 20px auto 0;
     background: @background-color-default;
     padding: 200px 0;
     img {

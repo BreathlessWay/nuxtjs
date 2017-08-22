@@ -107,6 +107,9 @@
       }
       .navbar-default .navbar-nav > li {
         padding: 0 20px;
+        &:hover a{
+          color: @color-active;
+        }
       }
       .navbar-default .navbar-nav > li > a {
         color: @color-default;
@@ -124,7 +127,7 @@
     }
     .blog-footer {
       padding: 30px 15px;
-      margin-top: 22px;
+      margin-top: 20px;
       background: @background-color-default;
       .blog-footer_copyright {
         padding-top: 30px;
@@ -198,7 +201,7 @@
   }
 </style>
 <script>
-  import * as mutationTypes from '../store/work/mutations'
+  import * as mutationTypes from '../store/entry/mutations'
   import { mapGetters } from 'vuex'
 
   export default {

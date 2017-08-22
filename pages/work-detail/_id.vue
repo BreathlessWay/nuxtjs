@@ -12,7 +12,7 @@
           <span class="glyphicon glyphicon-eye-open"></span>
           <span>{{detail.data.view_count}}</span>
           <span class="glyphicon glyphicon-time"></span>
-          <span>{{new Date(detail.data.published_at*1000).Format('yyyy.MM.dd')}}</span>
+          <span>{{new Date(detail.data.published_at * 1000).Format('yyyy.MM.dd')}}</span>
         </p>
       </header>
       <section class="text-center">
@@ -27,6 +27,7 @@
         <share-btn></share-btn>
       </div>
     </section>
+    <message v-model="show" :type="type" :message="message"></message>
   </article>
 </template>
 <script>
@@ -53,9 +54,17 @@
           error({statusCode: err.status || 404, message: err.message || 'Page not found'})
         })
     },
+    data () {
+      return {
+        show: false,
+        type: '',
+        message: ''
+      }
+    },
     components: {
       'good-btn': require('../../components/good-btn.vue').default,
-      'share-btn': require('../../components/share-btn.vue').default
+      'share-btn': require('../../components/share-btn.vue').default,
+      'message': require('../../components/message.vue').default
     },
     methods: {
       handleInput (val) {
@@ -68,7 +77,9 @@
             console.log(info, type)
           })
           .catch(err => {
-            alert(err)
+            this.show = true
+            this.type = 'error'
+            this.message = err
           })
       }
     }

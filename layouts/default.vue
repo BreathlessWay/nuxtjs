@@ -86,7 +86,7 @@
         </section>
       </article>
     </footer>
-    <message></message>
+    <message v-model="show" :type="type" :message="message"></message>
   </article>
 </template>
 
@@ -203,7 +203,11 @@
 
   export default {
     data () {
-      return {}
+      return {
+        show: false,
+        type: '',
+        message: ''
+      }
     },
     computed: {
       ...mapGetters(['baseConfig'])
@@ -211,10 +215,12 @@
     components: {
       'message': require('../components/message.vue').default
     },
-    created () {
+    mounted () {
       this.$store.dispatch(mutationTypes.GET_BASE_SETTING)
         .catch(err => {
-          alert(err)
+          this.show = true
+          this.type = 'error'
+          this.message = err
         })
     }
   }

@@ -26,6 +26,7 @@
         </ul>
       </div>
     </section>
+    <message v-model="show" :type="type" :message="message"></message>
   </article>
 </template>
 <script>
@@ -62,7 +63,10 @@
     data () {
       return {
         showModal: false,
-        activeIndex: 0
+        activeIndex: 0,
+        show: false,
+        type: '',
+        message: ''
       }
     },
     computed: {
@@ -74,13 +78,16 @@
       this.getList()
     },
     components: {
-      'pagination': require('../components/pagination.vue').default
+      'pagination': require('../components/pagination.vue').default,
+      'message': require('../components/message.vue').default
     },
     methods: {
       getList (params) {
         this.$store.dispatch(mutationTypes.GET_ARTICLE_LIST, {...this.articleBase.request, ...params})
           .catch(err => {
-            alert(err)
+            this.show = true
+            this.type = 'error'
+            this.message = err
           })
       },
       getArticleList (name, index) {

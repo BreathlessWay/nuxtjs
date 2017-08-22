@@ -11,7 +11,7 @@
     props: {
       value: {
         type: Boolean,
-        default: true
+        default: false
       },
       type: {
         type: String,
@@ -24,8 +24,22 @@
     },
     computed: {
       imgSrc () {
-        const img = require(`../assets/${this.type}.svg`)
+        const img = this.type ? require(`../assets/${this.type}.svg`) : ''
         return img
+      }
+    },
+    watch: {
+      value (val) {
+        if (val) {
+          this.close()
+        }
+      }
+    },
+    methods: {
+      close () {
+        setTimeout(() => {
+          this.$emit('input', false)
+        }, 3000)
       }
     }
   }
@@ -53,6 +67,7 @@
       text-align: center;
       width: 100%;
       line-height: 40px;
+      color: @color-default;
     }
   }
 

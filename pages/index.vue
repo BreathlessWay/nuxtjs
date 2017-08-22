@@ -26,6 +26,7 @@
         </aside>
       </article>
     </section>
+    <message v-model="show" :type="type" :message="message"></message>
   </article>
 </template>
 
@@ -53,13 +54,19 @@
     },
     data () {
       return {
-        activeIndex: 0
+        activeIndex: 0,
+        show: false,
+        type: '',
+        message: ''
       }
     },
     computed: {
       workBase () {
         return this.$store.state.work[this.title[this.activeIndex].name] ? this.$store.state.work[this.title[this.activeIndex].name] : this.$store.state.work.workBase
       }
+    },
+    components: {
+      'message': require('../components/message.vue').default
     },
     mounted () {
       this.getArticleList({tags: this.title[0].name})
@@ -68,7 +75,9 @@
       getArticleList (params) {
         this.$store.dispatch(mutationTypes.GET_WORK_LIST, {...this.workBase.request, ...params})
           .catch(err => {
-            alert(err)
+            this.show = true
+            this.type = 'error'
+            this.message = err
           })
       },
       handleTabsClick (index, name) {
@@ -158,7 +167,7 @@
         }
       }
       .blog-index_more {
-        .btn-default{
+        .btn-default {
           border-radius: 40px;
           width: 250px;
           height: 40px;

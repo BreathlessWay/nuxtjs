@@ -17,7 +17,7 @@
             </div>
           </li>
         </ul>
-        <pagination v-show="articleBase.response.list.length>0" :pageIndex="articleBase.request.page" :pageSize="articleBase.request.count" :total="articleBase.response.total"></pagination>
+        <pagination v-show="articleBase.response.list.length>0" :pageIndex="articleBase.request.page" :pageSize="articleBase.request.count" :total="articleBase.response.total" @changePage="changePage"></pagination>
       </article>
       <div class="article-index_nav hidden-xs text-center">
         <ul class="article-index_nav_list">
@@ -96,6 +96,9 @@
       },
       getArticleDetail (id) {
         this.$router.push({name: 'article-detail-id', params: {id}})
+      },
+      changePage (page) {
+        this.getList({page})
       }
     }
   }

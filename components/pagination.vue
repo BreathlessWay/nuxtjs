@@ -1,7 +1,7 @@
 <template>
   <nav aria-label="Page navigation">
     <ul class="pagination">
-      <li :class="{'active':pageIndex===list}" v-for="(list,index) in pageArray">
+      <li :class="{'active':pageIndex===list}" v-for="(list,index) in pageArray" @click="handleChangePage(list)">
         <a href="#">{{list}}</a>
       </li>
     </ul>
@@ -30,17 +30,18 @@
     },
     computed: {
       pageArray () {
-        if (this.total < this.count) {
-          return [1]
-        } else {
-          const array = []
-          const pageCount = Math.ceil(this.total / this.pageSize)
-          let len = pageCount < this.showItem ? pageCount : this.showItem
-          for (let i = 1; i <= len; i++) {
-            array.push(i)
-          }
-          return array
+        const array = []
+        const pageCount = Math.ceil(this.total / this.pageSize)
+        let len = pageCount < this.showItem ? pageCount : this.showItem
+        for (let i = 1; i <= len; i++) {
+          array.push(i)
         }
+        return array
+      }
+    },
+    methods: {
+      handleChangePage (index) {
+        this.$emit('changePage', index)
       }
     }
   }

@@ -1,18 +1,27 @@
 <template>
-  <section class="share-btn">
-    <span>分享到：</span>
+  <section class="share-btn" :class="{'share-btn-custom':customCSS}">
+    <span v-show="needTitle">分享到：</span>
     <div class="jiathis_style_32x32">
       <a class="jiathis_button_tsina"></a>
       <a class="jiathis_button_douban"></a>
       <a class="jiathis_button_huaban"></a>
       <a class="jiathis_button_cqq"></a>
-      <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
     </div>
   </section>
 </template>
 <script>
   export default {
     name: 'share-btn',
+    props: {
+      needTitle: {
+        type: Boolean,
+        default: true
+      },
+      customCSS: {
+        type: Boolean,
+        default: false
+      }
+    },
     mounted () {
       this.init()
     },
@@ -52,6 +61,43 @@
       }
       .jtico_cqq {
         background: url("../static/qq.png") no-repeat center;
+      }
+    }
+  }
+
+  .share-btn-custom {
+    .jiathis_style_32x32 {
+      display: flex;
+      justify-content: space-between;
+      width: 40%;
+      margin: auto;
+      padding: 20px 0;
+      a {
+        position: relative;
+        color: @color-default;
+        &:hover {
+          text-decoration: none;
+          opacity: 0.8;
+        }
+        &:after {
+          position: absolute;
+          white-space: nowrap;
+          top: 40px;
+          left: 0;
+        }
+      }
+      .jiathis_button_tsina:after {
+        content: '新浪微博';
+        left: -10px;
+      }
+      .jiathis_button_douban:after {
+        content: '豆瓣网';
+      }
+      .jiathis_button_huaban:after {
+        content: '花瓣网';
+      }
+      .jiathis_button_cqq:after {
+        content: 'QQ好友';
       }
     }
   }

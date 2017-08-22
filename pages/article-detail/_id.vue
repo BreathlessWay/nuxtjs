@@ -55,7 +55,7 @@
       </div>
     </section>
     <modal :show.sync="showModal" :needBtn="false" title="分享到">
-      <share-btn></share-btn>
+      <share-btn :needTitle="false" :customCSS="true"></share-btn>
     </modal>
   </article>
 </template>
@@ -125,6 +125,14 @@
       & {
         margin-top: 20px;
       }
+    }
+    .modal-title {
+      color: @color-active;
+      font-size: 16px;
+      text-align: center;
+    }
+    .modal-body {
+      padding: 15px 15px 30px;
     }
     .article-detail_container {
       display: flex;

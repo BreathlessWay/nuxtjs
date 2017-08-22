@@ -12,7 +12,7 @@
               <span class="icon-bar"></span>
             </button>
             <nuxt-link class="navbar-brand" to="/">
-              <img src="../static/logo.png" alt="logo">
+              <img src="../static/blog-logo.png" alt="logo">
             </nuxt-link>
           </div>
 

@@ -101,6 +101,7 @@
       }
     }
     .work-detail_content {
+      margin-top: 20px;
       padding: 40px;
       background: @background-color-default;
     }

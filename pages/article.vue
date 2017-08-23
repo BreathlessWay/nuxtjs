@@ -77,6 +77,9 @@
       }
     },
     mounted () {
+      if (document.documentElement.clientWidth < 700) {
+        this.$router.replace({name: 'phone'})
+      }
       this.getList()
     },
     components: {

@@ -55,10 +55,7 @@
     position: fixed;
     left: 50%;
     top: 20px;
-    -ms-transform: translateX(-50%);
-    transform: translateX(-50%);
     background-color: #fff;
-    transition: opacity .3s, transform .4s;
     overflow: hidden;
     z-index: 9999;
     display: flex;
@@ -72,9 +69,13 @@
     }
   }
 
-  .message-fade-enter, .message-fade-leave-active {
+  .message-enter-active, .message-leave-active {
+    transition: opacity .3s, transform .4s;
+    transform: translateY(0)
+  }
+
+  .message-enter {
     opacity: 0;
-    -ms-transform: translate(-50%, -100%);
-    transform: translate(-50%, -100%)
+    transform: translateY(-100%)
   }
 </style>

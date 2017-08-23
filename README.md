@@ -1,8 +1,8 @@
 # nuxtjs
 
-> Nuxt.js project
+> 一个基于nuxt实现的前后端分离的服务端渲染blog
 
-[PROJECT URL](http://ssr.smalltiger.me/)
+[博客地址：smalltiger blog](http://ssr.smalltiger.me/)
 ## Build Setup
 
 ``` bash
@@ -32,6 +32,11 @@ For detailed explanation on how things work, checkout the [Nuxt.js docs](https:/
 7. [axios](https://github.com/mzabriskie/axios)
 8. [sentry](https://docs.sentry.io/clients/javascript/)
 9. [less](http://less.bootcss.com/)
+
+## 服务端部署
+1. 基于webhook的自动发布，node插件 `github-webhook-handler`
+2. node脚本，shell脚本，服务端pm2进程管理
+3. nginx的反向代理
 
 ## Problem
 1. 通过cdn引入插件

@@ -79,3 +79,14 @@ For detailed explanation on how things work, checkout the [Nuxt.js docs](https:/
   >
  10. 时间戳转换 new Date(time*1000)
  11. 通过Vue.component(component.name,component)实现免声明引入，直接使用的组件
+ 12. pages中使用中间件 
+ 
+      `middleware: ['clientFilter']`
+      
+     在nuxt.config.js中使用中间件 
+     
+     `
+      router:{
+        middleware:['clientFilter']
+      }
+     `

@@ -43,6 +43,7 @@
         {hid: 'description', name: 'description', content: 'smalltiger blog'}
       ]
     },
+    middleware: ['clientFilter'],
     asyncData ({error}) {
       return axios.get('tags', {params: {type: 'articles'}})
         .then(res => {

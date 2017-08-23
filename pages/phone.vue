@@ -33,6 +33,12 @@
   export default {
     name: 'app',
     layout: 'phone',
+    head: {
+      title: '大胖的文章',
+      meta: [
+        {hid: 'description', name: 'description', content: 'smalltiger blog'}
+      ]
+    },
     data () {
       return {
         list: [],

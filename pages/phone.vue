@@ -84,11 +84,6 @@
 <style lang="less">
   @import "../assets/var";
 
-  body {
-    height: 100vh;
-    overflow: hidden;
-  }
-
   .wrap {
     max-width: 400px;
     height: calc(~ "100vh - 50px");

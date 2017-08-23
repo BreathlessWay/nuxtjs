@@ -2,7 +2,7 @@
 
 > Nuxt.js project
 
-[PROJECT URL](ssr.smalltiger.me)
+[PROJECT URL](http://ssr.smalltiger.me/)
 ## Build Setup
 
 ``` bash

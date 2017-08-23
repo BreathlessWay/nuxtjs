@@ -23,6 +23,7 @@
           </li>
           <li class="clearfix"></li>
         </ul>
+        <pagination v-show="shareBase.response.list.length>0" :pageIndex="shareBase.request.page" :pageSize="shareBase.request.count" :total="shareBase.response.total" @changePage="changePage"></pagination>
         <div class="text-center" v-show="shareBase.response.list.length === 0">
           <div class="white-space"></div>
           <img src="../static/no-article.png" alt="暂无作品" width="298" height="240">
@@ -71,6 +72,7 @@
       }
     },
     components: {
+      'pagination': require('../components/pagination.vue').default,
       'message': require('../components/message.vue').default
     },
     mounted () {
@@ -88,6 +90,9 @@
       handleTabsClick (index, name) {
         this.activeIndex = index
         this.getShareList({tags: name})
+      },
+      changePage (index) {
+        this.getShareList({page: index})
       }
     }
   }

@@ -22,6 +22,17 @@ $ npm run generate
 
 For detailed explanation on how things work, checkout the [Nuxt.js docs](https://github.com/nuxt/nuxt.js).
 
+## 技术栈
+1. [nuxtjs](https://zh.nuxtjs.org/)
+2. [vue](https://cn.vuejs.org/v2/guide/)
+3. [vue-router](https://router.vuejs.org/zh-cn/)
+4. [vuex](https://vuex.vuejs.org/zh-cn/)
+5. [bootstrap v3](http://v3.bootcss.com/)
+6. [qrcode](https://github.com/davidshimjs/qrcodejs/)
+7. [axios](https://github.com/mzabriskie/axios)
+8. [sentry](https://docs.sentry.io/clients/javascript/)
+9. [less](http://less.bootcss.com/)
+
 ## Problem
 1. 通过cdn引入插件
     >

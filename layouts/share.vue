@@ -114,10 +114,6 @@
       }
     }
   }
-
-  @media (min-width: @client-max-width) {
-  }
-
   @media (max-width: @client-max-width) {
     .blog-footer {
       .blog-footer_code {

@@ -150,8 +150,6 @@
       padding: 35px;
       font-size: 12px;
       color: @color-default;
-      .work-detail-btn_good.col-xs-12 {
-      }
       .work-detail-btn_share.col-xs-12 {
         text-align: right;
       }

@@ -4,9 +4,10 @@
       <article class="article-detail_content">
         <header class="article-detail_header">
           <h3 class="work-detail_title">{{detail.data.title}}</h3>
-          <ul class="article-detail_tag">
-            <li>tag</li>
-          </ul>
+          <div class="white-space"></div>
+          <!--<ul class="article-detail_tag">-->
+            <!--<li>tag</li>-->
+          <!--</ul>-->
         </header>
         <section class="article-detail_body">
           {{detail.data.body}}
@@ -112,11 +113,6 @@
 </script>
 <style lang="less">
   @import "../../assets/var";
-
-  #qrcode {
-    width: 125px;
-    height: 125px;
-  }
 
   .article-detail {
     max-width: @max-width;

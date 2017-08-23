@@ -22,7 +22,8 @@
       <div class="article-index_nav hidden-xs text-center">
         <ul class="article-index_nav_list">
           <li v-for="(list,index) in title" :key="index" @click="getArticleList(list.name,index)" :class="{'article-title_active':index === activeIndex}">
-            {{list.name + '(' + list.order_column + ')'}}
+            <!--{{list.name + '(' + list.order_column + ')'}}-->
+            {{list.name}}
           </li>
         </ul>
       </div>

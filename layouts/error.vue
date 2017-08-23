@@ -14,7 +14,6 @@
   }
 </script>
 <style lang="less" scoped>
-  @import "../assets/var";
 
   .not-found {
     img {

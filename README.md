@@ -80,14 +80,14 @@ For detailed explanation on how things work, checkout the [Nuxt.js docs](https:/
  10. 时间戳转换 new Date(time*1000)
  11. 通过Vue.component(component.name,component)实现免声明引入，直接使用的组件
  12. pages中使用中间件 
- 
-      `middleware: ['clientFilter']`
-      
-     在nuxt.config.js中使用中间件 
-     
-     `
+   >
+    middleware: ['clientFilter']`
+   >
+   在nuxt.config.js中使用中间件 
+   >
       router:{
         middleware:['clientFilter']
       }
-     `
+   >
+     
  13. 分享组件初始化会不断插入jiathis.js然后重新初始化jiathis，但是如果不每次重新插入jiathis.js会出现分享组件无法初始化的问题，目前暂未找到解决方案，如果有请告知

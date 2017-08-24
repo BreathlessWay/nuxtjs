@@ -4,10 +4,11 @@
       <article class="article-detail_content">
         <header class="article-detail_header">
           <h3 class="work-detail_title">{{detail.data.title}}</h3>
-          <div class="white-space"></div>
-          <!--<ul class="article-detail_tag">-->
-            <!--<li>tag</li>-->
-          <!--</ul>-->
+          <ul class="article-detail_tag">
+            <li v-for="(list,index) in detail.data.tags" :key="index">
+              {{list.name}}
+            </li>
+          </ul>
         </header>
         <section class="article-detail_body">
           {{detail.data.body}}
@@ -78,7 +79,7 @@
       return params.id
     },
     asyncData ({params, error}) {
-      return axios.get(`articles/${params.id}`)
+      return axios.get(`articles/${params.id}`, {params: {include: 'tags'}})
         .then(res => {
           return {
             detail: res.data
@@ -139,6 +140,12 @@
         background: @background-color-default;
         .article-detail_header {
           border-bottom: @detail-border-bottom;
+          .work-detail_title{
+            color: @color-active;
+            font-size: 24px;
+            margin-bottom: 0;
+            font-weight: 600;
+          }
         }
       }
       .article-detail_nav {
@@ -182,6 +189,7 @@
       }
       .article-detail_body {
         padding: 35px 0;
+        color: @color-active;
       }
       .article-detail_footer {
         display: flex;

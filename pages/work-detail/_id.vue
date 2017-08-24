@@ -9,7 +9,9 @@
           <span class="glyphicon glyphicon-menu-right" v-show="detail.data.next_slug" @click="$router.push({name:'work-detail-id',params:{id:detail.data.next_slug}})"></span>
         </aside>
         <ul class="col-xs-12 work-detail_tag">
-          <!--<li>ddd</li>-->
+          <li v-for="(list,index) in detail.data.tags" :key="index">
+            {{list.name}}
+          </li>
         </ul>
       </header>
       <section class="text-center">
@@ -49,7 +51,7 @@
       return params.id
     },
     asyncData ({params, error}) {
-      return axios.get(`articles/${params.id}`)
+      return axios.get(`articles/${params.id}`, {params: {include: 'tags'}})
         .then(res => {
           return {
             detail: res.data
@@ -131,7 +133,7 @@
     }
     .work-detail_tag {
       margin: 20px 0 40px;
-      padding: 0 0 30px;
+      padding: 0 0 40px;
       border-bottom: @detail-border-bottom;
       li {
         display: inline-block;

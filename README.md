@@ -90,3 +90,4 @@ For detailed explanation on how things work, checkout the [Nuxt.js docs](https:/
         middleware:['clientFilter']
       }
      `
+ 13. 分享组件初始化会不断插入jiathis.js然后重新初始化jiathis，但是如果不每次重新插入jiathis.js会出现分享组件无法初始化的问题，目前暂未找到解决方案，如果有请告知

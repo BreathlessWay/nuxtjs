@@ -1,6 +1,6 @@
 # nuxtjs
 
-> 一个基于nuxt实现的前后端分离的服务端渲染blog
+> 一个基于nuxt实现的前后端分离的服务端渲染blog(IE 10+)
 
 [博客地址：smalltiger blog](http://ssr.smalltiger.me/)
 ## Build Setup

@@ -1,6 +1,6 @@
 <template>
   <section class="share-btn" :class="{'share-btn-custom':customCSS}">
-    <span v-show="needTitle">分享到：</span>
+    <span v-show="needTitle" class="share-btn_title">分享到：</span>
     <div class="jiathis_style_32x32">
       <a class="jiathis_button_tsina"></a>
       <a class="jiathis_button_douban"></a>
@@ -42,6 +42,9 @@
     span {
       display: inline-block;
       vertical-align: middle;
+    }
+    .share-btn_title {
+      color: @color-default;
     }
     .jiathis_style_32x32 {
       background: none;

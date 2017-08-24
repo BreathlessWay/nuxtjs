@@ -23,7 +23,8 @@
           </li>
           <li class="clearfix"></li>
         </ul>
-        <pagination v-show="shareBase.response.list.length>0" :pageIndex="shareBase.request.page" :pageSize="shareBase.request.count" :total="shareBase.response.total" @changePage="changePage"></pagination>
+        <pagination v-show="shareBase.response.list.length>0" :pageIndex="shareBase.request.page" :pageSize="shareBase.request.count" :total="shareBase.response.total" @changePage="changePage" class="share-index_pagination"></pagination>
+        <div class="white-space"></div>
         <div class="text-center" v-show="shareBase.response.list.length === 0">
           <div class="white-space"></div>
           <img src="../static/no-article.png" alt="暂无作品" width="298" height="240">
@@ -101,7 +102,6 @@
   @import "../assets/var";
 
   .share-index {
-
     .share-index_wrap {
       width: 100%;
       background: @background-color-default;

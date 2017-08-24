@@ -23,8 +23,9 @@
           </li>
           <li class="clearfix"></li>
         </ul>
-        <pagination v-show="shareBase.response.list.length>0" :pageIndex="shareBase.request.page" :pageSize="shareBase.request.count" :total="shareBase.response.total" @changePage="changePage" class="share-index_pagination"></pagination>
-        <div class="white-space"></div>
+        <section class="share-index_pagination">
+          <pagination v-show="shareBase.response.list.length>0" :pageIndex="shareBase.request.page" :pageSize="shareBase.request.count" :total="shareBase.response.total" @changePage="changePage"></pagination>
+        </section>
         <div class="text-center" v-show="shareBase.response.list.length === 0">
           <div class="white-space"></div>
           <img src="../static/no-article.png" alt="暂无作品" width="298" height="240">
@@ -184,6 +185,9 @@
             border-radius: 50%;
           }
         }
+      }
+      .share-index_pagination {
+        padding: 10px 0 40px;
       }
     }
     @media (max-width: @client-max-width) {

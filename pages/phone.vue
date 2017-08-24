@@ -20,8 +20,9 @@
       </article>
     </section>
     <mugen-scroll class="you-can-add-custom-class-name" :handler="fetchUsers" :should-handle="!loading" scroll-container="scrollContainer">
-      <span class="loading dots"></span>
-      loading
+      <p class="text-center">
+        <span class="loading dots">{{loadText}}</span>
+      </p>
     </mugen-scroll>
   </article>
 </template>
@@ -44,12 +45,12 @@
         list: [],
         page: 1,
         loading: false,
-        totalPage: 100
+        totalPage: 100,
+        loadText: 'loading...'
       }
     },
     methods: {
       async fetchUsers () {
-        console.log(this.page, this.totalPage)
         if (this.page <= this.totalPage) {
           this.loading = true
           const result = await http.get('articles', {
@@ -69,6 +70,8 @@
           this.list = this.list.concat(result.data)
           this.page++
           this.loading = false
+        } else {
+          this.loadText = '没有更多了'
         }
       },
       getArticleDetail (id) {
@@ -81,7 +84,7 @@
   }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
   @import "../assets/var";
 
   .wrap {
@@ -89,6 +92,10 @@
     height: calc(~ "100vh - 50px");
     margin: 0 auto;
     overflow-y: auto;
+  }
+
+  .loading.dots {
+    color: @color-default;
   }
 
   @media (max-width: @client-max-width) {

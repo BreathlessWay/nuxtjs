@@ -8,12 +8,9 @@
           <span>|</span>
           <span class="glyphicon glyphicon-menu-right" v-show="detail.data.next_slug" @click="$router.push({name:'work-detail-id',params:{id:detail.data.next_slug}})"></span>
         </aside>
-        <p class="col-xs-12 work-detail_count">
-          <span class="glyphicon glyphicon-eye-open"></span>
-          <span>{{detail.data.view_count}}</span>
-          <span class="glyphicon glyphicon-time"></span>
-          <span>{{new Date(detail.data.published_at * 1000).Format('yyyy.MM.dd')}}</span>
-        </p>
+        <ul class="col-xs-12 work-detail_tag">
+          <!--<li>ddd</li>-->
+        </ul>
       </header>
       <section class="text-center">
         <img :src="detail.data.cover_link" :alt="detail.data.desc" style="max-width: 100%">
@@ -21,7 +18,11 @@
     </article>
     <section class="work-detail-btn row">
       <div class="col-sm-6 work-detail-btn_good col-xs-12">
-        <good-btn :goodCount.sync="detail.data.vote_count" @input="handleInput"></good-btn>
+        <!--<good-btn :goodCount.sync="detail.data.vote_count" @input="handleInput"></good-btn>-->
+        <span class="glyphicon glyphicon-eye-open"></span>
+        <span>{{detail.data.view_count}}</span>
+        <span class="glyphicon glyphicon-time"></span>
+        <span>{{new Date(detail.data.published_at * 1000).Format('yyyy.MM.dd')}}</span>
       </div>
       <div class="col-sm-6 work-detail-btn_share col-xs-12">
         <share-btn></share-btn>
@@ -128,13 +129,27 @@
         }
       }
     }
-    .work-detail_count {
+    .work-detail_tag {
       margin: 20px 0 40px;
       padding: 0 0 30px;
       border-bottom: @detail-border-bottom;
+      li {
+        display: inline-block;
+        padding: 0 15px;
+        border-radius: 20px;
+        background: #edf2f6;
+        color: #565d64;
+      }
+    }
+    .work-detail-btn_good {
+      line-height: 32px;
+      .glyphicon {
+        top: 0
+      }
       span {
+        display: inline-block;
         color: @color-default;
-        vertical-align: top;
+        vertical-align: middle;
         font-size: 13px;
         &:nth-of-type(1), &:nth-of-type(3) {
           margin-right: 8px;

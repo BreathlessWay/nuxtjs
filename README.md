@@ -2,6 +2,8 @@
 
 > Nuxt.js project
 
+# switch to dev branch
+
 ## Build Setup
 
 ``` bash

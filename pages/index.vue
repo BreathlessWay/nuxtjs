@@ -131,8 +131,8 @@
       .nav-pills > li {
         display: inline-block;
         float: none;
-        padding: 45px 15px;
-        &:hover a{
+        padding: 35px 25px 40px;
+        &:hover a {
           color: @color-active;
         }
       }
@@ -156,14 +156,14 @@
       .blog-index_img {
         padding-bottom: @MP30PX;
         li {
-          padding-top: @MP30PX;
+          padding: 0 33px 34px 0;
           text-align: center;
           img {
             width: 100%;
             max-width: 300px;
             transition: all 0.4s ease;
             &:hover {
-              box-shadow: 0 22px 43px 1px rgba(68, 68, 68, .2);
+              box-shadow: 0 12px 43px 1px rgba(68, 68, 68, .2);
               transform: translateY(-15px);
             }
           }
@@ -171,17 +171,28 @@
       }
       .blog-index_more {
         .btn-default {
+          transition: all 0.5s;
           border-radius: 40px;
           width: 250px;
           height: 40px;
           margin-bottom: @MP30PX;
         }
+        .btn:after {
+          color: @background-color;
+          content: '>';
+          margin-left: 0;
+          font-weight: 700;
+        }
+        .btn span {
+          transition: all 0.5s;
+        }
         .btn:hover {
           &:after {
-            content: '>';
-            margin-left: 10px;
-            font-weight: 700;
+            color: #333;
           }
+        }
+        .btn:hover span {
+          margin-right: 10px;
         }
       }
     }
@@ -196,6 +207,11 @@
           justify-content: space-between;
           li {
             padding: 15px 0 0;
+          }
+        }
+        .blog-index_img {
+          li {
+            padding: 33px 0 0
           }
         }
       }

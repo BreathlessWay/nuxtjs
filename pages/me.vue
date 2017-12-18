@@ -1,13 +1,15 @@
 <template>
-  <article class="text-center me-index">
-    <img src="../static/me.png" alt="关于我">
-    <section class="me-index_toast">
-      <a :href="baseConfig.resume_link" target="_blank" class="me-index_download text-center" v-if="baseConfig.resume_link">
-        <p>下</p>
-        <p>载</p>
-        <p>简</p>
-        <p>历</p>
-      </a>
+  <article class="me-container">
+    <section class="text-center me-index">
+      <img src="../static/me.png" alt="关于我">
+      <section class="me-index_toast">
+        <a :href="baseConfig.resume_link" target="_blank" class="me-index_download text-center" v-if="!baseConfig.resume_link">
+          <p>下</p>
+          <p>载</p>
+          <p>简</p>
+          <p>历</p>
+        </a>
+      </section>
     </section>
   </article>
 </template>
@@ -27,9 +29,15 @@
 <style lang="less">
   @import "../assets/var";
 
+  .me-container {
+    width: 100%;
+    background: #fff;
+    padding: 20px 0;
+  }
+
   .me-index {
     max-width: @max-width;
-    margin: 20px auto 0;
+    margin: 0 auto;
     background: @background-color-default;
     padding: 200px 0;
     img {

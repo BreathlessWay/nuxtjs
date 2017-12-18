@@ -3,13 +3,13 @@
     <header class="share-header text-center">
       <img src="../static/share-logo.png" alt="">
       <br>
-      <a href="/" class="btn btn-default">
-        <span>个人主页</span>
-      </a>
-      <br>
-      <a :href="'mailto:'+baseConfig.email" class="share-header_intro">
-        推荐链接
-      </a>
+      <!--<a href="/" class="btn btn-default">-->
+        <!--<span>个人主页</span>-->
+      <!--</a>-->
+      <!--<br>-->
+      <!--<a :href="'mailto:'+baseConfig.email" class="share-header_intro">-->
+        <!--推荐链接-->
+      <!--</a>-->
     </header>
     <div class="clearfix"></div>
     <nuxt/>
@@ -101,6 +101,12 @@
         padding-top: 40px;
         a {
           margin: 0 32px;
+          img {
+            transition: all 0.4s ease;
+            &:hover {
+              transform: translateY(-5px);
+            }
+          }
         }
       }
       .blog-footer_code {

@@ -115,7 +115,7 @@
 
   .article-index {
     max-width: @max-width;
-    margin: 20px auto 0;
+    margin: 40px auto;
     .article-index_container {
       display: flex;
       justify-content: space-around;

@@ -122,7 +122,7 @@
       .nav-pills > li {
         display: inline-block;
         float: none;
-        padding: 45px 15px;
+        padding: 35px 25px 40px;
         &:hover a {
           color: @color-active;
         }
@@ -147,15 +147,15 @@
       .share-index_img {
         padding-bottom: @MP30PX;
         li {
-          padding-top: @MP30PX;
+          padding: 0 33px 34px 0;
           section {
             border-radius: 10px;
             border: 1px solid #eeeeee;
             padding: 15px;
             transition: all 0.4s ease;
             &:hover {
-              box-shadow: 0 22px 43px 1px rgba(68, 68, 68, .2);
-              transform: translateY(-15px);
+              box-shadow: 0 4px 43px 1px rgba(68, 68, 68, .2);
+              transform: translateY(-10px);
             }
             span {
               overflow: hidden;
@@ -198,6 +198,12 @@
           justify-content: center;
           li {
             padding: 15px 0 0;
+          }
+        }
+        .share-index_img {
+          padding-bottom: @MP30PX;
+          li {
+            padding: 33px 33px 0;
           }
         }
       }

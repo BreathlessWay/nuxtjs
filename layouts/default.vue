@@ -1,7 +1,7 @@
 <template>
   <article class="blog">
     <header class="blog-header">
-      <nav class="navbar navbar-default navbar-fixed-top">
+      <nav class="navbar navbar-default">
         <div class="container-fluid blog-max-width">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
@@ -107,7 +107,7 @@
       }
       .navbar-default .navbar-nav > li {
         padding: 0 20px;
-        &:hover a{
+        &:hover a {
           color: @color-active;
         }
       }
@@ -138,6 +138,12 @@
         padding-top: 40px;
         a {
           margin: 0 32px;
+          img {
+            transition: all 0.4s ease;
+            &:hover {
+              transform: translateY(-5px);
+            }
+          }
         }
       }
       .blog-footer_code {

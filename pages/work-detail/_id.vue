@@ -15,7 +15,7 @@
         </ul>
       </header>
       <section class="text-center">
-        <img :src="detail.data.cover_link" :alt="detail.data.desc" style="max-width: 100%">
+        <img :src="detail.data.cover_link" :alt="detail.data.desc" style="width:100%;max-width: 600px">
       </section>
     </article>
     <section class="work-detail-btn row">

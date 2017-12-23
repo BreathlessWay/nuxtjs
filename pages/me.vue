@@ -3,7 +3,7 @@
     <section class="text-center me-index">
       <img src="../static/me.png" alt="关于我">
       <section class="me-index_toast">
-        <a :href="baseConfig.resume_link" target="_blank" class="me-index_download text-center" v-if="!baseConfig.resume_link">
+        <a :href="baseConfig.resume_link" target="_blank" class="me-index_download text-center" v-if="baseConfig.resume_link">
           <p>下</p>
           <p>载</p>
           <p>简</p>
@@ -19,7 +19,7 @@
   export default {
     name: 'me',
     head: {
-      title: '关于大胖'
+      title: '我'
     },
     computed: {
       ...mapGetters(['baseConfig'])
@@ -36,10 +36,11 @@
   }
 
   .me-index {
+    position: relative;
     max-width: @max-width;
     margin: 0 auto;
     background: @background-color-default;
-    padding: 200px 0;
+    padding: 12px 0;
     img {
       max-width: 90%;
     }
@@ -49,7 +50,7 @@
       }
     }
     .me-index_toast {
-      position: fixed;
+      position: absolute;
       max-width: 602px;
       top: 0;
       left: 0;
@@ -60,8 +61,8 @@
     .me-index_download {
       cursor: pointer;
       position: absolute;
-      top: 40%;
-      right: 2%;
+      top: 50%;
+      right: 9%;
       display: inline-block;
       padding: 12px 0;
       width: 38px;

@@ -41,7 +41,7 @@
                 </a>
               </nuxt-link>
               <nuxt-link tag="li" active-class="active" class="text-center" to="/share" exact>
-                <a>
+                <a target="_blank">
                   <span class="blog-header_en">Share</span>
                   <br>
                   <span class="blog-header_cn">分享</span>
@@ -99,9 +99,9 @@
       margin: auto;
     }
     .blog-header {
-      height: 140px;
+      height: 116px;
       .navbar-default {
-        padding: 34px 0 34px;
+        padding: 22px 0;
         border: none;
         background: @background-color-default;
       }
@@ -164,7 +164,7 @@
       padding: 0;
       img {
         margin-top: -5px;
-        width: 152px;
+        width: 130px;
       }
     }
 
@@ -180,6 +180,11 @@
 
     .blog .blog-header .navbar-default {
       padding: 5px 0;
+      position: fixed;
+      right: 0;
+      left: 0;
+      z-index: 1030;
+      top: 0;
     }
 
     .blog-header {
@@ -225,6 +230,8 @@
       'message': require('../components/message.vue').default
     },
     mounted () {
+      // navbar-fixed-top
+      // window.$('.navbar.navbar-defaul')
       this.$store.dispatch(mutationTypes.GET_BASE_SETTING)
         .catch(err => {
           this.show = true

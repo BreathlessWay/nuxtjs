@@ -101,6 +101,7 @@
   @media (max-width: @client-max-width) {
     .article-index_list {
       padding: 20px;
+      background: #fff;
       .article-index-content_list {
         li.media {
           .media-left, .media-body {

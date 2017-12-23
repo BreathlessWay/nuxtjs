@@ -21,12 +21,14 @@
         <pagination v-show="articleBase.response.list.length>0" :pageIndex="articleBase.request.page" :pageSize="articleBase.request.count" :total="articleBase.response.total" @changePage="changePage"></pagination>
       </article>
       <div class="article-index_nav hidden-xs text-center">
-        <ul class="article-index_nav_list">
-          <li v-for="(list,index) in title" :key="index" @click="getArticleList(list.name,index)" :class="{'article-title_active':index === activeIndex}">
-            <!--{{list.name + '(' + list.order_column + ')'}}-->
-            {{list.name}}
-          </li>
-        </ul>
+        <div class="article-index_nav_contain">
+          <ul class="article-index_nav_list">
+            <li v-for="(list,index) in title" :key="index" @click="getArticleList(list.name,index)" :class="{'article-title_active':index === activeIndex}">
+              <!--{{list.name + '(' + list.order_column + ')'}}-->
+              {{list.name}}
+            </li>
+          </ul>
+        </div>
       </div>
     </section>
     <message v-model="show" :type="type" :message="message"></message>
@@ -39,7 +41,7 @@
   export default {
     name: 'article-index',
     head: {
-      title: '大胖的文章',
+      title: '文章',
       meta: [
         {hid: 'description', name: 'description', content: 'smalltiger blog'}
       ]
@@ -162,18 +164,32 @@
       .article-index_nav {
         width: 192px;
         margin-left: 20px;
-        .article-index_nav_list {
+        .article-index_nav_contain {
+          height: 228px;
+          display: flex;
+          align-items: center;
+          width: 100%;
           background: @background-color-default;
-          padding: 30px 0;
+        }
+        .article-index_nav_list {
+          width: 100%;
+          height: 165px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          background: @background-color-default;
           li {
+            height: 21px;
+            line-height: 21px;
             font-size: 13px;
             color: @color-default;
-            margin-bottom: 30px;
             cursor: pointer;
             &:last-of-type {
               margin-bottom: 0;
             }
+            transition: all 0.4s ease;
             &:hover {
+              font-size: 15px;
               color: @color-active;
             }
           }

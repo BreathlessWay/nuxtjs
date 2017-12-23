@@ -36,7 +36,7 @@
 
   export default {
     head: {
-      title: '大胖的作品',
+      title: '小老虎喵喵',
       meta: [
         {hid: 'description', name: 'description', content: 'smalltiger work'}
       ]
@@ -107,9 +107,9 @@
   .blog-index {
     .blog-index_banner {
       background: url("../static/banner.png") @banner-background no-repeat center;
-      background-size: cover;
+      background-size: contain;
       width: 100%;
-      height: calc(~"100vh - 140px");
+      height: calc(~"100vh - 116px");
     }
 
     .blog-index_wrap {
@@ -124,8 +124,11 @@
         height: 40px;
         white-space: nowrap;
         text-overflow: ellipsis;
+        transition: all 0.4s ease;
         &:hover {
+          color: #3d444a;
           background: none;
+          font-size: 15px;
         }
       }
       .nav-pills > li {
@@ -187,6 +190,7 @@
           transition: all 0.5s;
         }
         .btn:hover {
+          border: @border-default;
           &:after {
             color: #333;
           }
@@ -199,8 +203,8 @@
     @media (max-width: @client-max-width) {
       .blog-index_banner {
         height: calc(~"100vh - 50px");
+        background-size: 140%;
       }
-
       .blog-index_content {
         .nav-pills {
           display: flex;

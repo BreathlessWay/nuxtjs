@@ -98,14 +98,13 @@
   .work-detail {
     max-width: @max-width;
     margin: auto;
-    @media (max-width: @client-max-width) {
+    @media (min-width: @client-max-width) {
       & {
         margin-top: 20px;
       }
     }
     .work-detail_content {
-      margin-top: 20px;
-      padding: 40px;
+      padding: 40px 40px 20px;
       background: @background-color-default;
     }
     .work-detail_title {
@@ -172,7 +171,8 @@
       }
       @media (max-width: @client-max-width) {
         & {
-          padding: 20px 0;
+          margin-top: 0;
+          padding: 0;
         }
 
         .work-detail-btn_good.col-xs-12 {
@@ -182,6 +182,7 @@
 
         .work-detail-btn_share.col-xs-12 {
           text-align: center;
+          display: none;
         }
       }
     }

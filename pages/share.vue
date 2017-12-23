@@ -44,7 +44,7 @@
     layout: 'share',
     name: 'share',
     head: {
-      title: '大胖的分享',
+      title: '分享中心',
       meta: [
         {hid: 'description', name: 'description', content: 'smalltiger share'}
       ]
@@ -145,7 +145,6 @@
         }
       }
       .share-index_img {
-        padding-bottom: @MP30PX;
         li {
           padding: 0 33px 34px 0;
           section {
@@ -184,6 +183,9 @@
             max-width: 100%;
             border-radius: 50%;
           }
+        }
+        li.clearfix{
+          padding: 0;
         }
       }
       .share-index_pagination {

@@ -27,9 +27,9 @@
             </a>
           </div>
         </footer>
-        <aside class="visible-xs-block work-detail-btn_share text-center">
-          <share-btn></share-btn>
-        </aside>
+        <!--<aside class="hidden-xs work-detail-btn_share text-center">-->
+        <!--<share-btn></share-btn>-->
+        <!--</aside>-->
       </article>
       <div class="article-detail_nav hidden-xs text-center">
         <ul class="article-detail_nav_list">
@@ -96,7 +96,7 @@
       }
     },
     mounted () {
-      this.minHeight = (document.body.clientHeight - document.querySelector('.blog-header').clientHeight - document.querySelector('.blog-footer').clientHeight) / 3 + 'px'
+      this.minHeight = (document.body.clientHeight - document.querySelector('.blog-header').clientHeight - document.querySelector('.blog-footer').clientHeight) / 2 + 'px'
       this.$qRCode(
         'qrcode', {
           text: window.location.href,
@@ -119,8 +119,8 @@
 
   .article-detail {
     max-width: @max-width;
-    margin: 20px auto;
-    @media (max-width: @client-max-width) {
+    margin: auto;
+    @media (min-width: @client-max-width) {
       & {
         margin-top: 20px;
       }
@@ -153,10 +153,10 @@
       .article-detail_nav {
         margin-left: 20px;
         a {
-          color: @color-active;
+          color: @color-default;
           &:hover {
             text-decoration: none;
-            color: @color-default;
+            color: @color-active;
           }
         }
         .article-detail_nav_list {
@@ -190,15 +190,14 @@
         }
       }
       .article-detail_body {
-        padding: 35px 0;
+        padding: 35px 0 20px;
         color: @color-active;
       }
       .article-detail_footer {
         display: flex;
         justify-content: space-around;
         .article-detail_count {
-          margin: 20px 0 40px;
-          padding: 0 0 30px;
+          padding: 0;
           span {
             color: @color-default;
             vertical-align: top;

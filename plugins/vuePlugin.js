@@ -8,18 +8,6 @@ MyPlugin.install = function (Vue, options) {
     // 逻辑...
   }
   // 2. 添加全局资源
-  Vue.directive('sound', {
-    bind (el, binding, vnode, oldVnode) {
-      // 逻辑...
-      const _sound = document.getElementById('hoverSound')
-      window.$(el).hover(() => {
-        _sound.currentTime = 0
-        _sound.play()
-      }, () => {
-        _sound.pause()
-      })
-    }
-  })
   Vue.directive('lazy', {
     bind (el, binding, vnode, oldVnode) {
       // 逻辑...

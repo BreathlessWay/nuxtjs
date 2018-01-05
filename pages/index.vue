@@ -10,7 +10,7 @@
         </ul>
         <ul class="blog-index_img" v-show="workBase.response.list.length>0">
           <li v-for="(list,index) in workBase.response.list" :key="index" class="col-sm-4">
-            <img src='../static/loadingn.gif' :alt=list.title class="blog-index_workList" :data-real-src=list.cover_link @click="getWorkDetail(list.id)" v-sound v-lazy>
+            <img src='../static/loadingn.gif' :alt=list.title class="blog-index_workList" :data-real-src=list.cover_link @click="getWorkDetail(list.id)" v-lazy>
           </li>
           <li class="clearfix"></li>
         </ul>

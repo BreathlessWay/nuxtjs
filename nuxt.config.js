@@ -83,14 +83,6 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
-      config.module.rules.push({
-        test: /\.mp3$/,
-        loader: 'url-loader',
-        exclude: /(node_modules)/,
-        query: {
-          name: 'media/[name].[hash:7].[ext]'
-        }
-      })
       config.externals = {
         $: 'jquery',
         jQuery: 'jquery',

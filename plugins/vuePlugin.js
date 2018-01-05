@@ -12,11 +12,9 @@ MyPlugin.install = function (Vue, options) {
     bind (el, binding, vnode, oldVnode) {
       // 逻辑...
       const _sound = document.getElementById('hoverSound')
-      window.$(el).hover(() => {
+      window.$(el).mouseenter(() => {
         _sound.currentTime = 0
         _sound.play()
-      }, () => {
-        _sound.pause()
       })
     }
   })

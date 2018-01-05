@@ -18,7 +18,12 @@
           </li>
         </ul>
         <div class="white-space" style="margin-bottom: 10px"></div>
-        <pagination v-show="articleBase.response.list.length>0" :pageIndex="articleBase.request.page" :pageSize="articleBase.request.count" :total="articleBase.response.total" @changePage="changePage"></pagination>
+        <!--<pagination v-show="articleBase.response.list.length>0" :pageIndex="articleBase.request.page" :pageSize="articleBase.request.count" :total="articleBase.response.total" @changePage="changePage" v-if="needPage"></pagination>-->
+        <aside class="blog-index_more text-center">
+          <button type="button" class="btn btn-default" v-show="articleBase.response.hasMore" @click="getMoreArticle">
+            <span>查看更多</span>
+          </button>
+        </aside>
       </article>
       <div class="article-index_nav hidden-xs text-center">
         <div class="article-index_nav_contain">
@@ -71,7 +76,8 @@
         activeIndex: 0,
         show: false,
         type: '',
-        message: ''
+        message: '',
+        needPage: true
       }
     },
     computed: {
@@ -81,7 +87,7 @@
     },
     mounted () {
       if (document.documentElement.clientWidth < 700) {
-        this.$router.replace({name: 'phone'})
+        this.needPage = false
       }
       this.getList()
     },
@@ -90,6 +96,12 @@
       'message': require('../components/message.vue').default
     },
     methods: {
+      getMoreArticle () {
+        const params = {...this.articleBase.request}
+        const page = params.page + 1
+        params.count = page * params.count
+        this.getList(params)
+      },
       getList (params) {
         this.$store.dispatch(mutationTypes.GET_ARTICLE_LIST, {...this.articleBase.request, ...params})
           .catch(err => {
@@ -202,10 +214,38 @@
       }
     }
 
+    .blog-index_more {
+      .btn-default {
+        transition: all 0.5s;
+        border-radius: 40px;
+        width: 250px;
+        height: 40px;
+        margin-bottom: @MP30PX;
+      }
+      .btn:after {
+        color: @background-color;
+        content: '>';
+        margin-left: 0;
+        font-weight: 700;
+      }
+      .btn span {
+        transition: all 0.5s;
+      }
+      .btn:hover {
+        border: @border-default;
+        &:after {
+          color: #333;
+        }
+      }
+      .btn:hover span {
+        margin-right: 10px;
+      }
+    }
   }
 
   @media (max-width: @client-max-width) {
     .article-index {
+      margin: 0 auto;
       .article-index_container {
         .article-index_list {
           padding: 20px;

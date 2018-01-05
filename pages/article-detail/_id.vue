@@ -138,6 +138,7 @@
       justify-content: space-around;
       .article-detail_content {
         width: 100%;
+        min-height: calc(~'100vh - 155px - 190px');
         padding: 20px 40px;
         background: @background-color-default;
         .article-detail_header {

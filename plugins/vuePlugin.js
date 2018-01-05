@@ -8,9 +8,27 @@ MyPlugin.install = function (Vue, options) {
     // 逻辑...
   }
   // 2. 添加全局资源
-  Vue.directive('my-directive', {
+  Vue.directive('sound', {
     bind (el, binding, vnode, oldVnode) {
       // 逻辑...
+      const _sound = document.getElementById('hoverSound')
+      window.$(el).hover(() => {
+        _sound.currentTime = 0
+        _sound.play()
+      }, () => {
+        _sound.pause()
+      })
+    }
+  })
+  Vue.directive('lazy', {
+    bind (el, binding, vnode, oldVnode) {
+      // 逻辑...
+      const realSrc = el.getAttribute('data-real-src')
+      const img = document.createElement('img')
+      img.onload = function () {
+        el.src = realSrc
+      }
+      img.src = realSrc
     }
   })
   // 3. 注入组件

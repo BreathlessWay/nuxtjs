@@ -4,13 +4,13 @@
     <section class="blog-index_wrap">
       <article class="blog-index_content">
         <ul class="nav nav-pills text-center">
-          <li role="presentation" v-for="(list,index) in title" :key="index" :class="{active:index===activeIndex}">
+          <li role="presentation" v-for="(list,index) in title" :key="index" :class="{active:index===activeIndex}" v-if="needTag">
             <a href="#" @click.prevent="handleTabsClick(index,list.name)">{{list.name}}</a>
           </li>
         </ul>
         <ul class="blog-index_img" v-show="workBase.response.list.length>0">
           <li v-for="(list,index) in workBase.response.list" :key="index" class="col-sm-4">
-            <img :src=list.cover_link :alt=list.title class="blog-index_workList" @click="getWorkDetail(list.id)">
+            <img src='../static/404.png' :alt=list.title class="blog-index_workList" :data-real-src=list.cover_link @click="getWorkDetail(list.id)" v-sound v-lazy>
           </li>
           <li class="clearfix"></li>
         </ul>
@@ -57,22 +57,29 @@
         activeIndex: 0,
         show: false,
         type: '',
-        message: ''
+        message: '',
+        needTag: true
       }
     },
     computed: {
       workBase () {
-        return this.$store.state.work[this.title[this.activeIndex].name] ? this.$store.state.work[this.title[this.activeIndex].name] : this.$store.state.work.workBase
+        if (this.needTag) {
+          return this.$store.state.work[this.title[this.activeIndex].name] ? this.$store.state.work[this.title[this.activeIndex].name] : this.$store.state.work.workBase
+        } else {
+          return this.$store.state.work.all ? this.$store.state.work.all : this.$store.state.work.workBase
+        }
       }
     },
     components: {
       'message': require('../components/message.vue').default
     },
     mounted () {
+      document.documentElement.clientWidth < 700 && (this.needTag = false)
       this.getArticleList({tags: this.title[0].name})
     },
     methods: {
       getArticleList (params) {
+        !this.needTag && (params.tags = '')
         this.$store.dispatch(mutationTypes.GET_WORK_LIST, {...this.workBase.request, ...params})
           .catch(err => {
             this.show = true
@@ -205,6 +212,7 @@
         height: calc(~"100vh - 50px");
         background-size: 140%;
       }
+
       .blog-index_content {
         .nav-pills {
           display: flex;

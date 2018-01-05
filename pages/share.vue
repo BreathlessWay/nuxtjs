@@ -2,7 +2,7 @@
   <article class="share-index">
     <section class="share-index_wrap">
       <article class="share-index_content">
-        <ul class="nav nav-pills text-center">
+        <ul class="nav nav-pills text-center" v-if="needTag">
           <li role="presentation" v-for="(list,index) in title" :key="index" :class="{active:index===activeIndex}">
             <a href="#" @click.prevent="handleTabsClick(index,list.name)">{{list.name}}</a>
           </li>
@@ -24,7 +24,12 @@
           <li class="clearfix"></li>
         </ul>
         <section class="share-index_pagination">
-          <pagination v-show="shareBase.response.list.length>0" :pageIndex="shareBase.request.page" :pageSize="shareBase.request.count" :total="shareBase.response.total" @changePage="changePage"></pagination>
+          <!--<pagination v-show="shareBase.response.list.length>0" :pageIndex="shareBase.request.page" :pageSize="shareBase.request.count" :total="shareBase.response.total" @changePage="changePage"></pagination>-->
+          <aside class="blog-index_more text-center">
+            <button type="button" class="btn btn-default" v-show="shareBase.response.hasMore" @click="getMoreArticle">
+              <span>查看更多</span>
+            </button>
+          </aside>
         </section>
         <div class="text-center" v-show="shareBase.response.list.length === 0">
           <div class="white-space"></div>
@@ -65,12 +70,17 @@
         activeIndex: 0,
         show: false,
         type: '',
-        message: ''
+        message: '',
+        needTag: true
       }
     },
     computed: {
       shareBase () {
-        return this.$store.state.share[this.title[this.activeIndex].name] ? this.$store.state.share[this.title[this.activeIndex].name] : this.$store.state.share.shareBase
+        if (this.needTag) {
+          return this.$store.state.share[this.title[this.activeIndex].name] ? this.$store.state.share[this.title[this.activeIndex].name] : this.$store.state.share.shareBase
+        } else {
+          return this.$store.state.share.all ? this.$store.state.share.all : this.$store.state.share.shareBase
+        }
       }
     },
     components: {
@@ -78,10 +88,18 @@
       'message': require('../components/message.vue').default
     },
     mounted () {
+      document.documentElement.clientWidth < 700 && (this.needTag = false)
       this.getShareList({tags: this.title[0].name})
     },
     methods: {
+      getMoreArticle () {
+        const params = {...this.shareBase.request}
+        const page = params.page + 1
+        params.count = page * params.count
+        this.getShareList(params)
+      },
       getShareList (params) {
+        !this.needTag && (params.tags = '')
         this.$store.dispatch(mutationTypes.GET_SHARE_LIST, {...this.shareBase.request, ...params})
           .catch(err => {
             this.show = true
@@ -184,7 +202,7 @@
             border-radius: 50%;
           }
         }
-        li.clearfix{
+        li.clearfix {
           padding: 0;
         }
       }
@@ -212,6 +230,33 @@
     }
     .share-index_workList {
       cursor: pointer;
+    }
+    .blog-index_more {
+      .btn-default {
+        transition: all 0.5s;
+        border-radius: 40px;
+        width: 250px;
+        height: 40px;
+        margin-bottom: @MP30PX;
+      }
+      .btn:after {
+        color: @background-color;
+        content: '>';
+        margin-left: 0;
+        font-weight: 700;
+      }
+      .btn span {
+        transition: all 0.5s;
+      }
+      .btn:hover {
+        border: @border-default;
+        &:after {
+          color: #333;
+        }
+      }
+      .btn:hover span {
+        margin-right: 10px;
+      }
     }
   }
 

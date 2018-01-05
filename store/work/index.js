@@ -19,7 +19,7 @@ const state = {
 
 const mutations = {
   [mutationTypes.UPDATE_WORK_LIST] (state, data) {
-    Vue.set(state, data.request.tags, {
+    Vue.set(state, data.request.tags || 'all', {
       ...state.workBase,
       ...data
     })

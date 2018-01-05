@@ -5,7 +5,8 @@
         <div class="container-fluid blog-max-width">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
               <span class="sr-only">Toggle navigation</span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
@@ -60,13 +61,13 @@
           <div class="col-sm-6 col-xs-12 text-center">
             <p class="blog-footer_btn">
               <a :href="baseConfig.weibo_link" target="_blank">
-                <img src="../static/footer-2.png" alt="新浪微博">
+                <img src="../static/footer-2.png" alt="新浪微博" v-sound>
               </a>
               <a :href="baseConfig.dribbble_link" target="_blank">
-                <img src="../static/footer-1.png" alt="dribbble">
+                <img src="../static/footer-1.png" alt="dribbble" v-sound>
               </a>
               <a :href="'mailto:'+baseConfig.email">
-                <img src="../static/footer-3.png" alt="邮箱">
+                <img src="../static/footer-3.png" alt="邮箱" v-sound>
               </a>
             </p>
             <p class="blog-footer_copyright">
@@ -86,7 +87,8 @@
         </section>
       </article>
     </footer>
-    <message v-model="show" :type="type" :message="message"></message>
+    <message v-model="show" :type="type" :message="message"/>
+    <audio :src="audio" id="hoverSound"></audio>
   </article>
 </template>
 
@@ -215,12 +217,14 @@
   import * as mutationTypes from '../store/entry/mutations'
   import { mapGetters } from 'vuex'
 
+  const audio = require('../static/imghover.mp3')
   export default {
     data () {
       return {
         show: false,
         type: '',
-        message: ''
+        message: '',
+        audio
       }
     },
     computed: {

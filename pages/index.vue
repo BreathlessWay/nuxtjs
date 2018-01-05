@@ -4,7 +4,7 @@
     <section class="blog-index_wrap">
       <article class="blog-index_content">
         <ul class="nav nav-pills text-center">
-          <li role="presentation" v-for="(list,index) in title" :key="index" :class="{active:index===activeIndex}" v-if="needTag">
+          <li role="presentation" v-for="(list,index) in title" :key="index" :class="{active:index===activeIndex}" v-if="needTag" class="blog-index_nav">
             <a href="#" @click.prevent="handleTabsClick(index,list.name)">{{list.name}}</a>
           </li>
         </ul>
@@ -14,7 +14,7 @@
           </li>
           <li class="clearfix"></li>
         </ul>
-        <div class="text-center" v-show="workBase.response.list.length === 0">
+        <div class="text-center" v-show="workBase.response.list.length === 0 && workBase.response.hasMore != undefined ">
           <div class="white-space"></div>
           <img src="../static/index-no-data.png" alt="暂无作品" width="298" height="241">
           <div class="white-space"></div>
@@ -26,7 +26,7 @@
         </aside>
       </article>
     </section>
-    <message v-model="show" :type="type" :message="message"></message>
+    <message v-model="show" :type="type" :message="message"/>
   </article>
 </template>
 
@@ -166,7 +166,7 @@
       .blog-index_img {
         padding-bottom: @MP30PX;
         li {
-          padding: 0 33px 34px 0;
+          padding-bottom: 34px;
           text-align: center;
           img {
             width: 100%;

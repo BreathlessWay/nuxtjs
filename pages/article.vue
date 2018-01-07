@@ -201,7 +201,6 @@
             }
             transition: all 0.4s ease;
             &:hover {
-              font-size: 15px;
               color: @color-active;
             }
           }

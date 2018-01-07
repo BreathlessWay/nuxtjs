@@ -81,7 +81,7 @@
             </p> &nbsp;&nbsp;&nbsp;&nbsp; <p class="text-center">
             <img :src="baseConfig.wechat_personal" alt="个人微信号" width="126" height="126">
             <br>
-            <span>微信公众号</span>
+            <span>微信个人号</span>
           </p>
           </div>
         </section>

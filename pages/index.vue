@@ -135,7 +135,6 @@
         &:hover {
           color: #3d444a;
           background: none;
-          font-size: 15px;
         }
       }
       .nav-pills > li {

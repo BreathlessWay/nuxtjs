@@ -10,7 +10,7 @@
             </li>
           </ul>
         </header>
-        <section class="article-detail_body" :style="{minHeight:minHeight}">
+        <section class="article-detail_body">
           {{detail.data.body}}
         </section>
         <footer class="article-detail_footer">
@@ -91,12 +91,10 @@
     },
     data () {
       return {
-        showModal: false,
-        minHeight: '200px'
+        showModal: false
       }
     },
     mounted () {
-      this.minHeight = (document.body.clientHeight - document.querySelector('.blog-header').clientHeight - document.querySelector('.blog-footer').clientHeight) / 2 + 'px'
       this.$qRCode(
         'qrcode', {
           text: window.location.href,
@@ -138,7 +136,6 @@
       justify-content: space-around;
       .article-detail_content {
         width: 100%;
-        min-height: calc(~'100vh - 155px - 190px');
         padding: 20px 40px;
         background: @background-color-default;
         .article-detail_header {
@@ -191,6 +188,7 @@
         }
       }
       .article-detail_body {
+        min-height: calc(~'100vh - 520px');
         padding: 35px 0 20px;
         color: @color-active;
       }

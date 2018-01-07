@@ -104,7 +104,7 @@
       }
     }
     .work-detail_content {
-      height: calc(~'100vh - 264px - 190px');
+      min-height: calc(~'100vh - 264px - 190px');
       padding: 40px 40px 20px;
       background: @background-color-default;
     }

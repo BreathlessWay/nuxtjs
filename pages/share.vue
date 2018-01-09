@@ -175,6 +175,7 @@
               transform: translateY(-10px);
             }
             span {
+              font-weight: 700;
               overflow: hidden;
               font-size: 14px;
               color: #222;
@@ -198,7 +199,7 @@
             }
           }
           img {
-            max-width: 100%;
+            max-width: 36px;
             border-radius: 50%;
           }
         }
@@ -230,6 +231,7 @@
     }
     .share-index_workList {
       cursor: pointer;
+      max-width: 36px;
     }
     .blog-index_more {
       .btn-default {

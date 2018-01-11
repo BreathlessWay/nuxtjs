@@ -9,7 +9,7 @@
         </ul>
         <ul class="share-index_img" v-show="shareBase.response.list.length>0">
           <li v-for="(list,index) in shareBase.response.list" :key="index" class="col-sm-4 col-md-3">
-            <a :href="list.link">
+            <a :href="list.link" target="_blank">
               <section>
                 <div>
                   <img :src=list.logo :alt=list.name class="share-index_workList" @click="getWorkDetail(list.id)">

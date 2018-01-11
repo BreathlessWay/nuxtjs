@@ -14,7 +14,7 @@
           </li>
         </ul>
       </header>
-      <section class="text-center" v-html="detail.data.body">
+      <section class="text-center work-detail_show" v-html="detail.data.body">
         <img :src="detail.data.cover_link" :alt="detail.data.desc" style="width:100%;max-width: 600px">
       </section>
     </article>
@@ -107,6 +107,11 @@
       min-height: calc(~'100vh - 264px - 190px');
       padding: 40px 40px 20px;
       background: @background-color-default;
+    }
+    .work-detail_show{
+      img{
+        max-width: 100%;
+      }
     }
     .work-detail_title {
       color: @color-active;

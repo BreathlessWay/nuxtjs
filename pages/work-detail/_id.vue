@@ -14,7 +14,7 @@
           </li>
         </ul>
       </header>
-      <section class="text-center work-detail_show" v-html="detail.data.body">
+      <section class="text-center work-detail_show" v-html="detail.data.body.replace(/\s\/>/g,'>')">
         <img :src="detail.data.cover_link" :alt="detail.data.desc" style="width:100%;max-width: 600px">
       </section>
     </article>
@@ -27,7 +27,7 @@
         <span>{{new Date(detail.data.published_at * 1000).Format('yyyy.MM.dd')}}</span>
       </div>
       <div class="col-sm-6 work-detail-btn_share col-xs-12">
-        <!--<share-btn></share-btn>-->
+        <share-btn></share-btn>
       </div>
     </section>
     <message v-model="show" :type="type" :message="message"></message>
@@ -53,6 +53,7 @@
     asyncData ({params, error}) {
       return axios.get(`articles/${params.id}`, {params: {include: 'tags'}})
         .then(res => {
+          console.log(res.data.data.body)
           return {
             detail: res.data
           }

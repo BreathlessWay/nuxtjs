@@ -14,7 +14,7 @@
           </li>
         </ul>
       </header>
-      <section class="text-center">
+      <section class="text-center" v-html="detail.data.body">
         <img :src="detail.data.cover_link" :alt="detail.data.desc" style="width:100%;max-width: 600px">
       </section>
     </article>

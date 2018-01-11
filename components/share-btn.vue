@@ -30,7 +30,6 @@
         let url = 'http://v3.jiathis.com/code/jia.js'
         let script = document.createElement('script')
         script.setAttribute('src', url)
-        script.setAttribute('defer', true)
         document.getElementsByTagName('head')[0].appendChild(script)
       }
     }

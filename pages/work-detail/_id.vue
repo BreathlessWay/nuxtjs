@@ -27,7 +27,7 @@
         <span>{{new Date(detail.data.published_at * 1000).Format('yyyy.MM.dd')}}</span>
       </div>
       <div class="col-sm-6 work-detail-btn_share col-xs-12">
-        <share-btn></share-btn>
+        <!--<share-btn></share-btn>-->
       </div>
     </section>
     <message v-model="show" :type="type" :message="message"></message>

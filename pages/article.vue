@@ -6,7 +6,7 @@
           <img src="../static/no-article.png" alt="暂无文章">
         </section>
         <ul class="article-index-content_list">
-          <li v-for="(list,index) in articleBase.response.list" class="media" @click="getArticleDetail(list.id)">
+          <li v-for="list in articleBase.response.list" class="media" @click="getArticleDetail(list.id)" :key="list.id">
             <div class="media-left">
               <img class="media-object" :src="list.cover_link" :alt="list.slug">
             </div>

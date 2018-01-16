@@ -2,7 +2,7 @@
 
 > 一个基于nuxt实现的前后端分离的服务端渲染blog(IE 10+)
 
-[博客地址：smalltiger blog](http://smalltiger.me/)
+[博客地址：smalltiger blog](http://www.smalltiger.me/)
 ## Build Setup
 
 ``` bash

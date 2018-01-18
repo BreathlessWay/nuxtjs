@@ -2,7 +2,7 @@
 
 > 一个基于nuxt实现的前后端分离的服务端渲染blog(IE 10+)
 
-[博客地址：smalltiger blog](http://ssr.smalltiger.me/)
+[博客地址：smalltiger blog](http://www.smalltiger.me/)
 ## Build Setup
 
 ``` bash
@@ -91,3 +91,4 @@ For detailed explanation on how things work, checkout the [Nuxt.js docs](https:/
    >
      
  13. 分享组件初始化会不断插入jiathis.js然后重新初始化jiathis，但是如果不每次重新插入jiathis.js会出现分享组件无法初始化的问题，目前暂未找到解决方案，如果有请告知
+ 14. 客户端,服务端的单标签渲染结果不同需要特殊处理

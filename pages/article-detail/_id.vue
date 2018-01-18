@@ -10,8 +10,7 @@
             </li>
           </ul>
         </header>
-        <section class="article-detail_body">
-          {{detail.data.body}}
+        <section class="article-detail_body" v-html="detail.data.body.replace(/\s\/>/g,'>')">>
         </section>
         <footer class="article-detail_footer">
           <div class="col-xs-8 article-detail_count">
